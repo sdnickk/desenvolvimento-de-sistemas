@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoParts - Peças Automotivas</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://kit.fontawesome.com/179296e26f.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>Auto<span>Parts</span></h1>
+                <p>Sua loja de autopeças online</p>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#pecas">Peças</a></li>
+                    <li><a href="#categorias">Categorias</a></li>
+                    <li><a href="#contato">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero" id="home">
+            <div class="container">
+                <h2>As melhores peças para seu veículo</h2>
+                <p>Encontre tudo o que precisa com os melhores preços do mercado</p>
+                <a href="#pecas" class="btn">Ver Catálogo</a>
+            </div>
+        </section>
+
+        <section class="search-bar">
+            <div class="container">
+                <form>
+                    <input type="text" placeholder="Buscar peças...">
+                    <select>
+                        <option value="">Todas categorias</option>
+                        <option value="motor">Motor</option>
+                        <option value="suspensao">Suspensão</option>
+                        <option value="freios">Freios</option>
+                        <option value="eletrica">Elétrica</option>
+                    </select>
+                    <button type="submit"><i class="fas fa-search"></i> Buscar</button>
+                </form>
+            </div>
+        </section>
+
+        <section class="categories" id="categorias">
+            <div class="container">
+                <h2 class="section-title">Categorias</h2>
+                <div class="category-grid">
+                    <div class="category-card">
+                        <img src="img/motor.jpg" alt="Motor">
+                        <h3>Motor</h3>
+                    </div>
+                    <div class="category-card">
+                        <img src="img/suspensão.jpg" alt="Suspensão">
+                        <h3>Suspensão</h3>
+                    </div>
+                    <div class="category-card">
+                        <img src="img/freios.jpg" alt="Freios">
+                        <h3>Freios</h3>
+                    </div>
+                    <div class="category-card">
+                        <img src="img/eletrica.jpg" alt="Elétrica">
+                        <h3>Elétrica</h3>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="featured-products" id="pecas">
+            <div class="container">
+                <h2 class="section-title">Peças em Destaque</h2>
+                <div class="product-grid">
+                    <div class="product-card">
+                        <img src="img/amortecedor.webp" alt="Amortecedor">
+                        <div class="product-info">
+                            <h3>Amortecedor Dianteiro</h3>
+                            <p class="description">Amortecedor dianteiro para diversos modelos</p>
+                            <div class="price">R$ 249,90</div>
+                            <button class="btn-add">Adicionar ao Carrinho</button>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <img src="img/past freio.jpg" alt="Pastilha de Freio">
+                        <div class="product-info">
+                            <h3>Pastilha de Freio</h3>
+                            <p class="description">Pastilha de freio dianteira - Kit com 4 peças</p>
+                            <div class="price">R$ 189,90</div>
+                            <button class="btn-add">Adicionar ao Carrinho</button>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <img src="img/bateria.webp" alt="Bateria Automotiva">
+                        <div class="product-info">
+                            <h3>Bateria 60Ah</h3>
+                            <p class="description">Bateria automotiva 60Ah - 12V</p>
+                            <div class="price">R$ 429,90</div>
+                            <button class="btn-add">Adicionar ao Carrinho</button>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <img src="img/filt oleo.png" alt="Filtro de Óleo">
+                        <div class="product-info">
+                            <h3>Filtro de Óleo</h3>
+                            <p class="description">Filtro de óleo para motores 1.0/1.4/1.6</p>
+                            <div class="price">R$ 39,90</div>
+                            <button class="btn-add">Adicionar ao Carrinho</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="brands">
+            <div class="container">
+                <h2 class="section-title">Marcas Parceiras</h2>
+                <div class="brand-grid">
+                    <img src="img/logo bosch.png" alt="Bosch">
+                    <img src="img/logo monroe.webp" alt="Monroe">
+                    <img src="img/moura.webp" alt="Moura">
+                    <img src="img/ngk.webp" alt="NGK">
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer id="contato">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>Siga-nos!</h3>
+                    <p>Loja especializada em peças automotivas com os melhores preços e qualidade do mercado.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Links Úteis</h3>
+                    <ul>
+                        <li><a href="#">Termos de Serviço</a></li>
+                        <li><a href="#">Política de Privacidade</a></li>
+                        <li><a href="#">Trocas e Devoluções</a></li>
+                        <li><a href="#">Formas de Pagamento</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Contato</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> Rua das Peças, 123 - Centro</li>
+                        <li><i class="fas fa-phone"></i> (99) 9999-9999</li>
+                        <li><i class="fas fa-envelope"></i> contato@email.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 AutoParts - Todos os direitos reservados</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
