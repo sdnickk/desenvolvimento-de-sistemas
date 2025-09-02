@@ -1,0 +1,18 @@
+CREATE DATABASE MinhaCaixa;
+
+use MinhaCaixa;
+
+CREATE TABLE FERIADOS
+ (
+ CODFERIADO INT IDENTITY (1,1) CONSTRAINT PK_FERIADO PRIMARY KEY,
+ NOMEFERIADO VARCHAR(100),
+ DATAFERIADO DATE
+     );
+
+INSERT FERIADOS (NOMEFERIADO, DATAFERIADO)
+             VALUES ('INDEPENDENCIA','2018-09-07');
+
+SELECT * FROM FERIADOS;
+
+INSERT CartaoCredito (AgenciaCodigo, ContaNumero, ClienteCodigo, CartaoCodigo, CartaoLimite, CartaoExpira, CartaoCodigoSeguranca)
+                              VALUES (1,'562296-2',25,'1001-2002-3003-4004',3500.00,'2020-10-10',   123  );

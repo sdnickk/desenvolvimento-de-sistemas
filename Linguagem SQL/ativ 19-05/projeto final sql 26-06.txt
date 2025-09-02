@@ -1,0 +1,953 @@
+mysql> use livraria;
+Database changed
+mysql> insert into livros (título, gênero, ano, preço, ISBN, id_editora, id_autor) values
+    -> ^C
+mysql> select * from autores;
++----+------------------------+----------------+-----------------+
+| id | nome                   | nacionalidade  | data_nascimento |
++----+------------------------+----------------+-----------------+
+|  1 | Gabriel García Márquez | Columbia       | 1927-03-06      |
+|  2 | William Shakespeare    | Inglaterra     | 1564-04-23      |
+|  3 | Clarice Lispector      | Brasil         | 1920-12-10      |
+|  4 | George Orwell          | Reino Unido    | 1903-06-25      |
+|  5 | J.K. Rowling           | Reino Unido    | 1965-07-31      |
+|  6 | Haruki Murakami        | Japão          | 1949-01-12      |
+|  7 | José Saramago          | Portugal       | 1922-11-16      |
+|  8 | Ernest Hemingway       | Estados Unidos | 1889-07-21      |
+|  9 | Isabel Allende         | Chile          | 1942-09-02      |
+| 10 | Machado de Assis       | Brasil         | 1839-06-21      |
+| 11 | Paulo Coelho           | Brasil         | 1947-08-24      |
+| 12 | Eça de Queirós         | Portugal       | 1845-11-25      |
+| 13 | Virginia Woolf         | Reino Unido    | 1882-01-25      |
+| 14 | Yukio Mishima          | Japão          | 1925-01-14      |
+| 15 | William Faulkner       | Estados Unidos | 1897-09-25      |
++----+------------------------+----------------+-----------------+
+15 rows in set (0.00 sec)
+
+mysql> select * from editoras;
++----+----------------------+----------------+----------------+
+| id | nome                 | cidade         | país           |
++----+----------------------+----------------+----------------+
+|  1 | Companhia das Letras | São Paulo      | Brasil         |
+|  2 | Editora Rocco        | Rio de Janeiro | Brasil         |
+|  3 | Penguin Books        | Londres        | Reino Unido    |
+|  4 | HarperCollins        | Nova Iorque    | Estados Unidos |
+|  5 | Simon & Schuster     | Nova Iorque    | Estados Unidos |
+|  6 | Planeta              | Barcelona      | Espanha        |
+|  7 | Gallimard            | Paris          | França         |
+|  8 | Mondadori            | Milão          | Itália         |
+|  9 | Kodansha             | Tóquio         | Japão          |
+| 10 | Alfaguara            | Madri          | Espanha        |
++----+----------------------+----------------+----------------+
+10 rows in set (0.00 sec)
+
+mysql> insert into livros (título, gênero, ano, preço, ISBN, id_editora, id_autor) values
+    -> ('Cem Anos de Solidão', 'Realismo Mágico', '1967', 59.90, 9780060883287, 1, 1),
+    -> ('Ensaio sobre a Cegueira', 'Romance', '1995', 52.00, '9788535914849', 1, 7),
+    -> ^C
+mysql> insert into livros (título, gênero, ano, preço, ISBN, id_editora, id_autor) values
+    -> ('Cem Anos de Solidão', 'Realismo Mágico', '1967', 59.90, '9780060883287', 1, 1),
+    -> ('Ensaio sobre a Cegueira', 'Romance', '1995', 52.00, '9788535914849', 1, 7),
+    -> ('Harry Potter e a Pedra Filosofal', 'Fantasia', '1997', 49.90, '9788532511010', 2, 5),
+    -> ('Kafka à Beira-Mar', 'Ficção Surrealista', '2002', 58.00, '9788535914842', 6)
+    -> ^C
+mysql> insert into livros (título, gênero, ano, preço, ISBN, id_editora, id_autor) values
+    -> ('Cem Anos de Solidão', 'Realismo Mágico', '1967', 59.90, '9780060883287', 1, 1),
+    -> ('Ensaio sobre a Cegueira', 'Romance', '1995', 52.00, '9788535914849', 1, 7),]
+    ->
+    -> ^C
+mysql> insert into livros (título, gênero, ano, preço, ISBN, id_editora, id_autor) values
+    -> ('Cem Anos de Solidão', 'Realismo Mágico', '1967', 59.90, '9780060883287', 1, 1),
+    -> ('Ensaio sobre a Cegueira', 'Romance', '1995', 52.00, '9788535914849', 1, 7),
+    -> ('Harry Potter e a Pedra Filosofal', 'Fantasia', '1997', 49.90, '9788532511010', 2, 5),
+    -> ('Kafka à Beira-Mar', 'Ficção Surrealista', '2002', 58.00, '9788535914842', 10, 6);
+Query OK, 4 rows affected (0.01 sec)
+Records: 4  Duplicates: 0  Warnings: 0
+
+mysql> insert into livros (título, gênero, ano, preço, ISBN, id_editora, id_autor) values
+    -> ('O Alquimista', 'Ficção Filosófica', '1988', 39.90, '9780061122415', 6, 11),
+    -> ('1984', 'Distopia', '1949', 46.50, '9788535914843', 1, 4),
+    -> ('Esaú e Jacó', 'Ficção', '1904', 32.00, '9780520376373', 2, 10),
+    -> ('Mrs. Dalloway', 'Romance Modernista', '1925', 42.00, '9780141182490', 3, 13),
+    -> ('O Velho e o Mar', 'Ficção Clássica', '1952', 38.00, '9780684801223', 5, 8),
+    -> ('As Intermitências da Morte', 'Fantasia Filosófica', '2005', 47.00, '9788535915666', 1, 7),
+    -> ('Amor nos Tempos do Cólera', 'Romance', '1985', 49.90, '9780307389732', 7, 1),
+    -> ('Norwegian Wood', 'Romance Dramático', '1987', 44.00, '9780375704024', 9, 6),
+    -> ('A Casa dos Espíritos', 'Realismo Mágico', '1982', 51.90, '9788535914843', 6, 9),
+    -> ('A Hora da Estrela', 'Romance Existencial', '1977', 35.00, '9788535902772', 2, 3);
+Query OK, 10 rows affected (0.02 sec)
+Records: 10  Duplicates: 0  Warnings: 0
+
+mysql> insert into livros (título, gênero, ano, preço, ISBN, id_editora, id_autor) values
+    -> ('Veronika Decide Morrer', 'Romance Drama', '1998', 39.90, '9788575420187', 6, 11);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from livros;
++----+----------------------------------+-------------------------+------+-------+---------------+------------+----------+
+| id | título                           | gênero                  | ano  | preço | ISBN          | id_editora | id_autor |
++----+----------------------------------+-------------------------+------+-------+---------------+------------+----------+
+|  1 | Cem Anos de Solidão              | Romance/Realismo Mágico | 1967 | 59.90 | 9788573026430 |          1 |        1 |
+|  2 | Cem Anos de Solidão              | Realismo Mágico         | 1967 | 59.90 | 9780060883287 |          1 |        1 |
+|  3 | Ensaio sobre a Cegueira          | Romance                 | 1995 | 52.00 | 9788535914849 |          1 |        7 |
+|  4 | Harry Potter e a Pedra Filosofal | Fantasia                | 1997 | 49.90 | 9788532511010 |          2 |        5 |
+|  5 | Kafka à Beira-Mar                | Ficção Surrealista      | 2002 | 58.00 | 9788535914842 |         10 |        6 |
+|  6 | O Alquimista                     | Ficção Filosófica       | 1988 | 39.90 | 9780061122415 |          6 |       11 |
+|  7 | 1984                             | Distopia                | 1949 | 46.50 | 9788535914843 |          1 |        4 |
+|  8 | Esaú e Jacó                      | Ficção                  | 1904 | 32.00 | 9780520376373 |          2 |       10 |
+|  9 | Mrs. Dalloway                    | Romance Modernista      | 1925 | 42.00 | 9780141182490 |          3 |       13 |
+| 10 | O Velho e o Mar                  | Ficção Clássica         | 1952 | 38.00 | 9780684801223 |          5 |        8 |
+| 11 | As Intermitências da Morte       | Fantasia Filosófica     | 2005 | 47.00 | 9788535915666 |          1 |        7 |
+| 12 | Amor nos Tempos do Cólera        | Romance                 | 1985 | 49.90 | 9780307389732 |          7 |        1 |
+| 13 | Norwegian Wood                   | Romance Dramático       | 1987 | 44.00 | 9780375704024 |          9 |        6 |
+| 14 | A Casa dos Espíritos             | Realismo Mágico         | 1982 | 51.90 | 9788535914843 |          6 |        9 |
+| 15 | A Hora da Estrela                | Romance Existencial     | 1977 | 35.00 | 9788535902772 |          2 |        3 |
+| 16 | Veronika Decide Morrer           | Romance Drama           | 1998 | 39.90 | 9788575420187 |          6 |       11 |
++----+----------------------------------+-------------------------+------+-------+---------------+------------+----------+
+16 rows in set (0.00 sec)
+
+mysql> delete * from autoes where id = 14, 15;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '* from autoes where id = 14, 15' at line 1
+mysql> delete * from autores where id = 14, 15;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '* from autores where id = 14, 15' at line 1
+mysql> delete from autores where id = 14;
+Query OK, 1 row affected (0.02 sec)
+
+mysql> delete from autores where id = 15;
+Query OK, 1 row affected (0.02 sec)
+
+mysql> select * from autores;
++----+------------------------+----------------+-----------------+
+| id | nome                   | nacionalidade  | data_nascimento |
++----+------------------------+----------------+-----------------+
+|  1 | Gabriel García Márquez | Columbia       | 1927-03-06      |
+|  2 | William Shakespeare    | Inglaterra     | 1564-04-23      |
+|  3 | Clarice Lispector      | Brasil         | 1920-12-10      |
+|  4 | George Orwell          | Reino Unido    | 1903-06-25      |
+|  5 | J.K. Rowling           | Reino Unido    | 1965-07-31      |
+|  6 | Haruki Murakami        | Japão          | 1949-01-12      |
+|  7 | José Saramago          | Portugal       | 1922-11-16      |
+|  8 | Ernest Hemingway       | Estados Unidos | 1889-07-21      |
+|  9 | Isabel Allende         | Chile          | 1942-09-02      |
+| 10 | Machado de Assis       | Brasil         | 1839-06-21      |
+| 11 | Paulo Coelho           | Brasil         | 1947-08-24      |
+| 12 | Eça de Queirós         | Portugal       | 1845-11-25      |
+| 13 | Virginia Woolf         | Reino Unido    | 1882-01-25      |
++----+------------------------+----------------+-----------------+
+13 rows in set (0.00 sec)
+
+mysql> insert into clientes (nome, email, telefone, endereço) values
+    -> insert into clientes (nome, email, telefone, endereço) values ^C
+mysql>
+mysql> insert into vendas (data, id_cliente, id_livro, quantidade, total) values
+    -> ^C
+mysql> select * from clientes;
++----+-----------------------+-------------------------+-------------+-------------------------------------------+
+| id | nome                  | email                   | telefone    | endereço                                  |
++----+-----------------------+-------------------------+-------------+-------------------------------------------+
+|  1 | Ana Beatriz Souza     | ana.souza@email.com     | 11912345678 | Rua das Flores, 123 ? São Paulo/SP        |
+|  2 | Carlos Henrique Lima  | carlos.hlima@email.com  | 21998765432 | Av. Atlântica, 456 ? Rio de Janeiro/RJ    |
+|  3 | Fernanda Oliveira     | fernanda.o@email.com    | 31987654321 | Rua Minas Gerais, 789 ? Belo Horizonte/MG |
+|  4 | João Pedro Martins    | joaopedro.m@email.com   | 41912340000 | Rua Paraná, 101 ? Curitiba/PR             |
+|  5 | Larissa Almeida Costa | larissa.costa@email.com | 51999998888 | Av. Ipiranga, 2020 ? Porto Alegre/RS      |
+|  6 | Ricardo Nunes Barros  | ricardo.nb@email.com    | 61981234567 | SHN Quadra 2 ? Brasília/DF                |
+|  7 | Camila Ferreira Dias  | camila.fd@email.com     | 71996667777 | Rua das Acácias, 55 ? Salvador/BA         |
+|  8 | Tiago Ramos Santana   | tiago.rs@email.com      | 85994443333 | Av. Beira Mar, 77 ? Fortaleza/CE          |
+|  9 | Juliana Mendes Rocha  | juliana.mr@email.com    | 95993332222 | Rua das Árvores, 88 ? Boa Vista/RR        |
+| 10 | Marcelo Antunes Rocha | marcelo.ar@email.com    | 27982221111 | Av. Vitória, 900 ? Vitória/ES             |
++----+-----------------------+-------------------------+-------------+-------------------------------------------+
+10 rows in set (0.00 sec)
+
+mysql> select * from livros;
++----+----------------------------------+-------------------------+------+-------+---------------+------------+----------+
+| id | título                           | gênero                  | ano  | preço | ISBN          | id_editora | id_autor |
++----+----------------------------------+-------------------------+------+-------+---------------+------------+----------+
+|  1 | Cem Anos de Solidão              | Romance/Realismo Mágico | 1967 | 59.90 | 9788573026430 |          1 |        1 |
+|  2 | Cem Anos de Solidão              | Realismo Mágico         | 1967 | 59.90 | 9780060883287 |          1 |        1 |
+|  3 | Ensaio sobre a Cegueira          | Romance                 | 1995 | 52.00 | 9788535914849 |          1 |        7 |
+|  4 | Harry Potter e a Pedra Filosofal | Fantasia                | 1997 | 49.90 | 9788532511010 |          2 |        5 |
+|  5 | Kafka à Beira-Mar                | Ficção Surrealista      | 2002 | 58.00 | 9788535914842 |         10 |        6 |
+|  6 | O Alquimista                     | Ficção Filosófica       | 1988 | 39.90 | 9780061122415 |          6 |       11 |
+|  7 | 1984                             | Distopia                | 1949 | 46.50 | 9788535914843 |          1 |        4 |
+|  8 | Esaú e Jacó                      | Ficção                  | 1904 | 32.00 | 9780520376373 |          2 |       10 |
+|  9 | Mrs. Dalloway                    | Romance Modernista      | 1925 | 42.00 | 9780141182490 |          3 |       13 |
+| 10 | O Velho e o Mar                  | Ficção Clássica         | 1952 | 38.00 | 9780684801223 |          5 |        8 |
+| 11 | As Intermitências da Morte       | Fantasia Filosófica     | 2005 | 47.00 | 9788535915666 |          1 |        7 |
+| 12 | Amor nos Tempos do Cólera        | Romance                 | 1985 | 49.90 | 9780307389732 |          7 |        1 |
+| 13 | Norwegian Wood                   | Romance Dramático       | 1987 | 44.00 | 9780375704024 |          9 |        6 |
+| 14 | A Casa dos Espíritos             | Realismo Mágico         | 1982 | 51.90 | 9788535914843 |          6 |        9 |
+| 15 | A Hora da Estrela                | Romance Existencial     | 1977 | 35.00 | 9788535902772 |          2 |        3 |
+| 16 | Veronika Decide Morrer           | Romance Drama           | 1998 | 39.90 | 9788575420187 |          6 |       11 |
++----+----------------------------------+-------------------------+------+-------+---------------+------------+----------+
+16 rows in set (0.00 sec)
+
+mysql> insert into vendas (data, id_cliente, id_livro, quantidade, total) values
+    -> ('2025-06-01', 1, 1, 1, 59.90);
+Query OK, 1 row affected (0.02 sec)
+
+mysql> update livros set título = 'Ensaio sobre a Cegueira' where id = 2;
+Query OK, 1 row affected (0.02 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from livros;
++----+----------------------------------+-------------------------+------+-------+---------------+------------+----------+
+| id | título                           | gênero                  | ano  | preço | ISBN          | id_editora | id_autor |
++----+----------------------------------+-------------------------+------+-------+---------------+------------+----------+
+|  1 | Cem Anos de Solidão              | Romance/Realismo Mágico | 1967 | 59.90 | 9788573026430 |          1 |        1 |
+|  2 | Ensaio sobre a Cegueira          | Realismo Mágico         | 1967 | 59.90 | 9780060883287 |          1 |        1 |
+|  3 | Ensaio sobre a Cegueira          | Romance                 | 1995 | 52.00 | 9788535914849 |          1 |        7 |
+|  4 | Harry Potter e a Pedra Filosofal | Fantasia                | 1997 | 49.90 | 9788532511010 |          2 |        5 |
+|  5 | Kafka à Beira-Mar                | Ficção Surrealista      | 2002 | 58.00 | 9788535914842 |         10 |        6 |
+|  6 | O Alquimista                     | Ficção Filosófica       | 1988 | 39.90 | 9780061122415 |          6 |       11 |
+|  7 | 1984                             | Distopia                | 1949 | 46.50 | 9788535914843 |          1 |        4 |
+|  8 | Esaú e Jacó                      | Ficção                  | 1904 | 32.00 | 9780520376373 |          2 |       10 |
+|  9 | Mrs. Dalloway                    | Romance Modernista      | 1925 | 42.00 | 9780141182490 |          3 |       13 |
+| 10 | O Velho e o Mar                  | Ficção Clássica         | 1952 | 38.00 | 9780684801223 |          5 |        8 |
+| 11 | As Intermitências da Morte       | Fantasia Filosófica     | 2005 | 47.00 | 9788535915666 |          1 |        7 |
+| 12 | Amor nos Tempos do Cólera        | Romance                 | 1985 | 49.90 | 9780307389732 |          7 |        1 |
+| 13 | Norwegian Wood                   | Romance Dramático       | 1987 | 44.00 | 9780375704024 |          9 |        6 |
+| 14 | A Casa dos Espíritos             | Realismo Mágico         | 1982 | 51.90 | 9788535914843 |          6 |        9 |
+| 15 | A Hora da Estrela                | Romance Existencial     | 1977 | 35.00 | 9788535902772 |          2 |        3 |
+| 16 | Veronika Decide Morrer           | Romance Drama           | 1998 | 39.90 | 9788575420187 |          6 |       11 |
++----+----------------------------------+-------------------------+------+-------+---------------+------------+----------+
+16 rows in set (0.00 sec)
+
+mysql> update livros set título = 'Crônica de uma Morte Anunciada' where id = 2;
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update livros set gênero = 'Realismo Mágico' where id = 2;
+Query OK, 0 rows affected (0.00 sec)
+Rows matched: 1  Changed: 0  Warnings: 0
+
+mysql> update livros set ano = '1981' where id = 2;
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update livros set preço = 45.00 where id = 2;
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from livros;
++----+----------------------------------+-------------------------+------+-------+---------------+------------+----------+
+| id | título                           | gênero                  | ano  | preço | ISBN          | id_editora | id_autor |
++----+----------------------------------+-------------------------+------+-------+---------------+------------+----------+
+|  1 | Cem Anos de Solidão              | Romance/Realismo Mágico | 1967 | 59.90 | 9788573026430 |          1 |        1 |
+|  2 | Crônica de uma Morte Anunciada   | Realismo Mágico         | 1981 | 45.00 | 9780060883287 |          1 |        1 |
+|  3 | Ensaio sobre a Cegueira          | Romance                 | 1995 | 52.00 | 9788535914849 |          1 |        7 |
+|  4 | Harry Potter e a Pedra Filosofal | Fantasia                | 1997 | 49.90 | 9788532511010 |          2 |        5 |
+|  5 | Kafka à Beira-Mar                | Ficção Surrealista      | 2002 | 58.00 | 9788535914842 |         10 |        6 |
+|  6 | O Alquimista                     | Ficção Filosófica       | 1988 | 39.90 | 9780061122415 |          6 |       11 |
+|  7 | 1984                             | Distopia                | 1949 | 46.50 | 9788535914843 |          1 |        4 |
+|  8 | Esaú e Jacó                      | Ficção                  | 1904 | 32.00 | 9780520376373 |          2 |       10 |
+|  9 | Mrs. Dalloway                    | Romance Modernista      | 1925 | 42.00 | 9780141182490 |          3 |       13 |
+| 10 | O Velho e o Mar                  | Ficção Clássica         | 1952 | 38.00 | 9780684801223 |          5 |        8 |
+| 11 | As Intermitências da Morte       | Fantasia Filosófica     | 2005 | 47.00 | 9788535915666 |          1 |        7 |
+| 12 | Amor nos Tempos do Cólera        | Romance                 | 1985 | 49.90 | 9780307389732 |          7 |        1 |
+| 13 | Norwegian Wood                   | Romance Dramático       | 1987 | 44.00 | 9780375704024 |          9 |        6 |
+| 14 | A Casa dos Espíritos             | Realismo Mágico         | 1982 | 51.90 | 9788535914843 |          6 |        9 |
+| 15 | A Hora da Estrela                | Romance Existencial     | 1977 | 35.00 | 9788535902772 |          2 |        3 |
+| 16 | Veronika Decide Morrer           | Romance Drama           | 1998 | 39.90 | 9788575420187 |          6 |       11 |
++----+----------------------------------+-------------------------+------+-------+---------------+------------+----------+
+16 rows in set (0.00 sec)
+
+mysql> select * from clientes;
++----+-----------------------+-------------------------+-------------+-------------------------------------------+
+| id | nome                  | email                   | telefone    | endereço                                  |
++----+-----------------------+-------------------------+-------------+-------------------------------------------+
+|  1 | Ana Beatriz Souza     | ana.souza@email.com     | 11912345678 | Rua das Flores, 123 ? São Paulo/SP        |
+|  2 | Carlos Henrique Lima  | carlos.hlima@email.com  | 21998765432 | Av. Atlântica, 456 ? Rio de Janeiro/RJ    |
+|  3 | Fernanda Oliveira     | fernanda.o@email.com    | 31987654321 | Rua Minas Gerais, 789 ? Belo Horizonte/MG |
+|  4 | João Pedro Martins    | joaopedro.m@email.com   | 41912340000 | Rua Paraná, 101 ? Curitiba/PR             |
+|  5 | Larissa Almeida Costa | larissa.costa@email.com | 51999998888 | Av. Ipiranga, 2020 ? Porto Alegre/RS      |
+|  6 | Ricardo Nunes Barros  | ricardo.nb@email.com    | 61981234567 | SHN Quadra 2 ? Brasília/DF                |
+|  7 | Camila Ferreira Dias  | camila.fd@email.com     | 71996667777 | Rua das Acácias, 55 ? Salvador/BA         |
+|  8 | Tiago Ramos Santana   | tiago.rs@email.com      | 85994443333 | Av. Beira Mar, 77 ? Fortaleza/CE          |
+|  9 | Juliana Mendes Rocha  | juliana.mr@email.com    | 95993332222 | Rua das Árvores, 88 ? Boa Vista/RR        |
+| 10 | Marcelo Antunes Rocha | marcelo.ar@email.com    | 27982221111 | Av. Vitória, 900 ? Vitória/ES             |
++----+-----------------------+-------------------------+-------------+-------------------------------------------+
+10 rows in set (0.00 sec)
+
+mysql> select * from livros;
++----+----------------------------------+-------------------------+------+-------+---------------+------------+----------+
+| id | título                           | gênero                  | ano  | preço | ISBN          | id_editora | id_autor |
++----+----------------------------------+-------------------------+------+-------+---------------+------------+----------+
+|  1 | Cem Anos de Solidão              | Romance/Realismo Mágico | 1967 | 59.90 | 9788573026430 |          1 |        1 |
+|  2 | Crônica de uma Morte Anunciada   | Realismo Mágico         | 1981 | 45.00 | 9780060883287 |          1 |        1 |
+|  3 | Ensaio sobre a Cegueira          | Romance                 | 1995 | 52.00 | 9788535914849 |          1 |        7 |
+|  4 | Harry Potter e a Pedra Filosofal | Fantasia                | 1997 | 49.90 | 9788532511010 |          2 |        5 |
+|  5 | Kafka à Beira-Mar                | Ficção Surrealista      | 2002 | 58.00 | 9788535914842 |         10 |        6 |
+|  6 | O Alquimista                     | Ficção Filosófica       | 1988 | 39.90 | 9780061122415 |          6 |       11 |
+|  7 | 1984                             | Distopia                | 1949 | 46.50 | 9788535914843 |          1 |        4 |
+|  8 | Esaú e Jacó                      | Ficção                  | 1904 | 32.00 | 9780520376373 |          2 |       10 |
+|  9 | Mrs. Dalloway                    | Romance Modernista      | 1925 | 42.00 | 9780141182490 |          3 |       13 |
+| 10 | O Velho e o Mar                  | Ficção Clássica         | 1952 | 38.00 | 9780684801223 |          5 |        8 |
+| 11 | As Intermitências da Morte       | Fantasia Filosófica     | 2005 | 47.00 | 9788535915666 |          1 |        7 |
+| 12 | Amor nos Tempos do Cólera        | Romance                 | 1985 | 49.90 | 9780307389732 |          7 |        1 |
+| 13 | Norwegian Wood                   | Romance Dramático       | 1987 | 44.00 | 9780375704024 |          9 |        6 |
+| 14 | A Casa dos Espíritos             | Realismo Mágico         | 1982 | 51.90 | 9788535914843 |          6 |        9 |
+| 15 | A Hora da Estrela                | Romance Existencial     | 1977 | 35.00 | 9788535902772 |          2 |        3 |
+| 16 | Veronika Decide Morrer           | Romance Drama           | 1998 | 39.90 | 9788575420187 |          6 |       11 |
++----+----------------------------------+-------------------------+------+-------+---------------+------------+----------+
+16 rows in set (0.00 sec)
+
+mysql> insert into vendas (data, id_cliente, id_livro, quantidade, total) values
+    -> ('2025-06-02', 2, 4, 2, 99.80),
+    -> ('2025-06-03', 3, 3, 1, 52.00),
+    -> ('2025-06-04', 4, 6, 3, 119.70),
+    -> ('2025-06-05', 5, 13, 1, 44.00),
+    -> ('2025-06-06', 6, 10, 2, 76.00),
+    -> ('2025-06-07', 7, 7, 1, 46.50),
+    -> ('2025-06-08', 8, 14, 1, 51,90),
+    -> ('2025-06-09', 9, 15, 2, 70.00),
+    -> ('2025-06-10', 10, 16, 1, 39.90);
+ERROR 1136 (21S01): Column count doesn't match value count at row 7
+mysql> insert into vendas (data, id_cliente, id_livro, quantidade, total) values
+    -> ('2025-06-02', 2, 4, 2, 99.80),
+    -> ('2025-06-03', 3, 3, 1, 52.00),
+    -> ('2025-06-04', 4, 6, 3, 119.70),
+    -> ('2025-06-05', 5, 13, 1, 44.00),
+    -> ('2025-06-06', 6, 10, 2, 76.00),
+    -> ('2025-06-07', 7, 7, 1, 46.50),
+    -> ('2025-06-08', 8, 14, 1, 51.90),
+    -> ('2025-06-09', 9, 15, 2, 70.00),
+    -> ('2025-06-10', 10, 16, 1, 39.90);
+Query OK, 9 rows affected (0.02 sec)
+Records: 9  Duplicates: 0  Warnings: 0
+
+mysql> select * from livros;
++----+----------------------------------+-------------------------+------+-------+---------------+------------+----------+
+| id | título                           | gênero                  | ano  | preço | ISBN          | id_editora | id_autor |
++----+----------------------------------+-------------------------+------+-------+---------------+------------+----------+
+|  1 | Cem Anos de Solidão              | Romance/Realismo Mágico | 1967 | 59.90 | 9788573026430 |          1 |        1 |
+|  2 | Crônica de uma Morte Anunciada   | Realismo Mágico         | 1981 | 45.00 | 9780060883287 |          1 |        1 |
+|  3 | Ensaio sobre a Cegueira          | Romance                 | 1995 | 52.00 | 9788535914849 |          1 |        7 |
+|  4 | Harry Potter e a Pedra Filosofal | Fantasia                | 1997 | 49.90 | 9788532511010 |          2 |        5 |
+|  5 | Kafka à Beira-Mar                | Ficção Surrealista      | 2002 | 58.00 | 9788535914842 |         10 |        6 |
+|  6 | O Alquimista                     | Ficção Filosófica       | 1988 | 39.90 | 9780061122415 |          6 |       11 |
+|  7 | 1984                             | Distopia                | 1949 | 46.50 | 9788535914843 |          1 |        4 |
+|  8 | Esaú e Jacó                      | Ficção                  | 1904 | 32.00 | 9780520376373 |          2 |       10 |
+|  9 | Mrs. Dalloway                    | Romance Modernista      | 1925 | 42.00 | 9780141182490 |          3 |       13 |
+| 10 | O Velho e o Mar                  | Ficção Clássica         | 1952 | 38.00 | 9780684801223 |          5 |        8 |
+| 11 | As Intermitências da Morte       | Fantasia Filosófica     | 2005 | 47.00 | 9788535915666 |          1 |        7 |
+| 12 | Amor nos Tempos do Cólera        | Romance                 | 1985 | 49.90 | 9780307389732 |          7 |        1 |
+| 13 | Norwegian Wood                   | Romance Dramático       | 1987 | 44.00 | 9780375704024 |          9 |        6 |
+| 14 | A Casa dos Espíritos             | Realismo Mágico         | 1982 | 51.90 | 9788535914843 |          6 |        9 |
+| 15 | A Hora da Estrela                | Romance Existencial     | 1977 | 35.00 | 9788535902772 |          2 |        3 |
+| 16 | Veronika Decide Morrer           | Romance Drama           | 1998 | 39.90 | 9788575420187 |          6 |       11 |
++----+----------------------------------+-------------------------+------+-------+---------------+------------+----------+
+16 rows in set (0.00 sec)
+
+mysql> insert into estoque (id_livro, quantidade, localização) values
+    -> (1, 12, 'Estante A1 - Prat. 3'),
+    -> (4, 8, 'Estante B2 - Prat. 1'),
+    -> (3, 5, 'Estante C1 - Prat. 2'),
+    -> (6, 20, 'Estante A3 - Prat. 4'),
+    -> (13, 7, 'Estante D1 - Prat. 1'),
+    -> (10, 10, 'Estante B1 - Prat. 3'),
+    -> (7, 6, 'Estante C3 - Prat. 2'),
+    -> (14, 4, 'Estante D2 - Prat. 4'),
+    -> (15, 15, 'Estante A2 - Prat. 1'),
+    -> (16, 9, 'Estante B3 - Prat. 2');
+Query OK, 10 rows affected (0.02 sec)
+Records: 10  Duplicates: 0  Warnings: 0
+
+mysql> select * from livros order by título;
++----+----------------------------------+-------------------------+------+-------+---------------+------------+----------+
+| id | título                           | gênero                  | ano  | preço | ISBN          | id_editora | id_autor |
++----+----------------------------------+-------------------------+------+-------+---------------+------------+----------+
+|  7 | 1984                             | Distopia                | 1949 | 46.50 | 9788535914843 |          1 |        4 |
+| 14 | A Casa dos Espíritos             | Realismo Mágico         | 1982 | 51.90 | 9788535914843 |          6 |        9 |
+| 15 | A Hora da Estrela                | Romance Existencial     | 1977 | 35.00 | 9788535902772 |          2 |        3 |
+| 12 | Amor nos Tempos do Cólera        | Romance                 | 1985 | 49.90 | 9780307389732 |          7 |        1 |
+| 11 | As Intermitências da Morte       | Fantasia Filosófica     | 2005 | 47.00 | 9788535915666 |          1 |        7 |
+|  1 | Cem Anos de Solidão              | Romance/Realismo Mágico | 1967 | 59.90 | 9788573026430 |          1 |        1 |
+|  2 | Crônica de uma Morte Anunciada   | Realismo Mágico         | 1981 | 45.00 | 9780060883287 |          1 |        1 |
+|  3 | Ensaio sobre a Cegueira          | Romance                 | 1995 | 52.00 | 9788535914849 |          1 |        7 |
+|  8 | Esaú e Jacó                      | Ficção                  | 1904 | 32.00 | 9780520376373 |          2 |       10 |
+|  4 | Harry Potter e a Pedra Filosofal | Fantasia                | 1997 | 49.90 | 9788532511010 |          2 |        5 |
+|  5 | Kafka à Beira-Mar                | Ficção Surrealista      | 2002 | 58.00 | 9788535914842 |         10 |        6 |
+|  9 | Mrs. Dalloway                    | Romance Modernista      | 1925 | 42.00 | 9780141182490 |          3 |       13 |
+| 13 | Norwegian Wood                   | Romance Dramático       | 1987 | 44.00 | 9780375704024 |          9 |        6 |
+|  6 | O Alquimista                     | Ficção Filosófica       | 1988 | 39.90 | 9780061122415 |          6 |       11 |
+| 10 | O Velho e o Mar                  | Ficção Clássica         | 1952 | 38.00 | 9780684801223 |          5 |        8 |
+| 16 | Veronika Decide Morrer           | Romance Drama           | 1998 | 39.90 | 9788575420187 |          6 |       11 |
++----+----------------------------------+-------------------------+------+-------+---------------+------------+----------+
+16 rows in set (0.01 sec)
+
+mysql> select * from livros where ano > 1990;
++----+----------------------------------+---------------------+------+-------+---------------+------------+----------+
+| id | título                           | gênero              | ano  | preço | ISBN          | id_editora | id_autor |
++----+----------------------------------+---------------------+------+-------+---------------+------------+----------+
+|  3 | Ensaio sobre a Cegueira          | Romance             | 1995 | 52.00 | 9788535914849 |          1 |        7 |
+|  4 | Harry Potter e a Pedra Filosofal | Fantasia            | 1997 | 49.90 | 9788532511010 |          2 |        5 |
+|  5 | Kafka à Beira-Mar                | Ficção Surrealista  | 2002 | 58.00 | 9788535914842 |         10 |        6 |
+| 11 | As Intermitências da Morte       | Fantasia Filosófica | 2005 | 47.00 | 9788535915666 |          1 |        7 |
+| 16 | Veronika Decide Morrer           | Romance Drama       | 1998 | 39.90 | 9788575420187 |          6 |       11 |
++----+----------------------------------+---------------------+------+-------+---------------+------------+----------+
+5 rows in set (0.01 sec)
+
+mysql> select gênero, count(*) as quantidade
+    -> from livros group by genêro;
+ERROR 1054 (42S22): Unknown column 'genêro' in 'group statement'
+mysql> from livros group by gnero;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'from livros group by gnero' at line 1
+mysql> select gênero, count(*) as quantidade
+    -> from livros group by gênero;
++-------------------------+------------+
+| gênero                  | quantidade |
++-------------------------+------------+
+| Romance/Realismo Mágico |          1 |
+| Realismo Mágico         |          2 |
+| Romance                 |          2 |
+| Fantasia                |          1 |
+| Ficção Surrealista      |          1 |
+| Ficção Filosófica       |          1 |
+| Distopia                |          1 |
+| Ficção                  |          1 |
+| Romance Modernista      |          1 |
+| Ficção Clássica         |          1 |
+| Fantasia Filosófica     |          1 |
+| Romance Dramático       |          1 |
+| Romance Existencial     |          1 |
+| Romance Drama           |          1 |
++-------------------------+------------+
+14 rows in set (0.01 sec)
+
+mysql> select título, preço from livros order by preço
+    -> limit 5;
++------------------------+-------+
+| título                 | preço |
++------------------------+-------+
+| Esaú e Jacó            | 32.00 |
+| A Hora da Estrela      | 35.00 |
+| O Velho e o Mar        | 38.00 |
+| Veronika Decide Morrer | 39.90 |
+| O Alquimista           | 39.90 |
++------------------------+-------+
+5 rows in set (0.00 sec)
+
+mysql> select título, preço from livros order by preço desc
+    -> limit 5;
++---------------------------+-------+
+| título                    | preço |
++---------------------------+-------+
+| Cem Anos de Solidão       | 59.90 |
+| Kafka à Beira-Mar         | 58.00 |
+| Ensaio sobre a Cegueira   | 52.00 |
+| A Casa dos Espíritos      | 51.90 |
+| Amor nos Tempos do Cólera | 49.90 |
++---------------------------+-------+
+5 rows in set (0.00 sec)
+
+mysql> select * from livros where autor = 'Clarice Linspector';
+ERROR 1054 (42S22): Unknown column 'autor' in 'where clause'
+mysql> select * from livros where id_autor = 3;
++----+-------------------+---------------------+------+-------+---------------+------------+----------+
+| id | título            | gênero              | ano  | preço | ISBN          | id_editora | id_autor |
++----+-------------------+---------------------+------+-------+---------------+------------+----------+
+| 15 | A Hora da Estrela | Romance Existencial | 1977 | 35.00 | 9788535902772 |          2 |        3 |
++----+-------------------+---------------------+------+-------+---------------+------------+----------+
+1 row in set (0.00 sec)
+
+mysql> select nome, nacionalidade from autores where nacionalidade = 'Brasil';
++-------------------+---------------+
+| nome              | nacionalidade |
++-------------------+---------------+
+| Clarice Lispector | Brasil        |
+| Machado de Assis  | Brasil        |
+| Paulo Coelho      | Brasil        |
++-------------------+---------------+
+3 rows in set (0.00 sec)
+
+mysql> select * from autores where data_nasciemento > 1919;
+ERROR 1054 (42S22): Unknown column 'data_nasciemento' in 'where clause'
+mysql> select * from autores where data_nascimento > 1919;
++----+------------------------+----------------+-----------------+
+| id | nome                   | nacionalidade  | data_nascimento |
++----+------------------------+----------------+-----------------+
+|  1 | Gabriel García Márquez | Columbia       | 1927-03-06      |
+|  2 | William Shakespeare    | Inglaterra     | 1564-04-23      |
+|  3 | Clarice Lispector      | Brasil         | 1920-12-10      |
+|  4 | George Orwell          | Reino Unido    | 1903-06-25      |
+|  5 | J.K. Rowling           | Reino Unido    | 1965-07-31      |
+|  6 | Haruki Murakami        | Japão          | 1949-01-12      |
+|  7 | José Saramago          | Portugal       | 1922-11-16      |
+|  8 | Ernest Hemingway       | Estados Unidos | 1889-07-21      |
+|  9 | Isabel Allende         | Chile          | 1942-09-02      |
+| 10 | Machado de Assis       | Brasil         | 1839-06-21      |
+| 11 | Paulo Coelho           | Brasil         | 1947-08-24      |
+| 12 | Eça de Queirós         | Portugal       | 1845-11-25      |
+| 13 | Virginia Woolf         | Reino Unido    | 1882-01-25      |
++----+------------------------+----------------+-----------------+
+13 rows in set, 1 warning (0.00 sec)
+
+mysql> select * from autores where data_nascimento > '1919-01-01';
++----+------------------------+---------------+-----------------+
+| id | nome                   | nacionalidade | data_nascimento |
++----+------------------------+---------------+-----------------+
+|  1 | Gabriel García Márquez | Columbia      | 1927-03-06      |
+|  3 | Clarice Lispector      | Brasil        | 1920-12-10      |
+|  5 | J.K. Rowling           | Reino Unido   | 1965-07-31      |
+|  6 | Haruki Murakami        | Japão         | 1949-01-12      |
+|  7 | José Saramago          | Portugal      | 1922-11-16      |
+|  9 | Isabel Allende         | Chile         | 1942-09-02      |
+| 11 | Paulo Coelho           | Brasil        | 1947-08-24      |
++----+------------------------+---------------+-----------------+
+7 rows in set (0.01 sec)
+
+mysql> select a.nome, count(l.id_autor) as quantidade_livros
+    -> from autores a
+    -> ^C
+mysql> select a.nome, count(l.id_autor) as quantidade_livros
+    -> from livros l
+    -> join autores a on l.id_autor = a.id
+    -> group by nome;]
++------------------------+-------------------+
+| nome                   | quantidade_livros |
++------------------------+-------------------+
+| Gabriel García Márquez |                 3 |
+| Clarice Lispector      |                 1 |
+| George Orwell          |                 1 |
+| J.K. Rowling           |                 1 |
+| Haruki Murakami        |                 2 |
+| José Saramago          |                 2 |
+| Ernest Hemingway       |                 1 |
+| Isabel Allende         |                 1 |
+| Machado de Assis       |                 1 |
+| Paulo Coelho           |                 2 |
+| Virginia Woolf         |                 1 |
++------------------------+-------------------+
+11 rows in set (0.01 sec)
+
+    -> ^C
+mysql> select a.id, a.nome
+    -> from autores a
+    -> left join livros l on a.id = l.id_autor
+    -> where l.id is null;
++----+---------------------+
+| id | nome                |
++----+---------------------+
+|  2 | William Shakespeare |
+| 12 | Eça de Queirós      |
++----+---------------------+
+2 rows in set (0.00 sec)
+
+mysql> select * from autores where nome like %de%;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '%de%' at line 1
+mysql> select * from autores where nome like '%de%';
++----+------------------+---------------+-----------------+
+| id | nome             | nacionalidade | data_nascimento |
++----+------------------+---------------+-----------------+
+|  9 | Isabel Allende   | Chile         | 1942-09-02      |
+| 10 | Machado de Assis | Brasil        | 1839-06-21      |
+| 12 | Eça de Queirós   | Portugal      | 1845-11-25      |
++----+------------------+---------------+-----------------+
+3 rows in set (0.00 sec)
+
+mysql> select * from editoras where país = 'Espanha';
++----+-----------+-----------+---------+
+| id | nome      | cidade    | país    |
++----+-----------+-----------+---------+
+|  6 | Planeta   | Barcelona | Espanha |
+| 10 | Alfaguara | Madri     | Espanha |
++----+-----------+-----------+---------+
+2 rows in set (0.00 sec)
+
+mysql> select e.nome, count(l.id_editora) as quantidade_publicados
+    -> from livros l
+    -> join editoras e on l.id_editora = e.id
+    -> group by nome;
++----------------------+-----------------------+
+| nome                 | quantidade_publicados |
++----------------------+-----------------------+
+| Companhia das Letras |                     5 |
+| Editora Rocco        |                     3 |
+| Penguin Books        |                     1 |
+| Simon & Schuster     |                     1 |
+| Planeta              |                     3 |
+| Gallimard            |                     1 |
+| Kodansha             |                     1 |
+| Alfaguara            |                     1 |
++----------------------+-----------------------+
+8 rows in set (0.00 sec)
+
+mysql> select e.nome, l.ano as ano_publicado
+    -> from livros l
+    -> join editoras on l.id_editora = e.id
+    -> group by nome;
+ERROR 1054 (42S22): Unknown column 'e.nome' in 'field list'
+mysql> select e.nome, l.ano as ano_publicado
+    -> from livros l
+    -> join editoras e on l.id_editora = e.id
+    -> group by nome;
+ERROR 1055 (42000): Expression #2 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'livraria.l.ano' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+mysql> select e.nome, l.ano as ano_publicado
+    -> from livros l
+    -> join editoras e on l.id_editora = e.id
+    -> group by e.nome;
+ERROR 1055 (42000): Expression #2 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'livraria.l.ano' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+mysql> select e.nome, l.ano as ano_publicado
+    -> from livros l
+    -> join editoras e on l.id_editora = e.id
+    -> order by l.ano;
++----------------------+---------------+
+| nome                 | ano_publicado |
++----------------------+---------------+
+| Editora Rocco        |          1904 |
+| Penguin Books        |          1925 |
+| Companhia das Letras |          1949 |
+| Simon & Schuster     |          1952 |
+| Companhia das Letras |          1967 |
+| Editora Rocco        |          1977 |
+| Companhia das Letras |          1981 |
+| Planeta              |          1982 |
+| Gallimard            |          1985 |
+| Kodansha             |          1987 |
+| Planeta              |          1988 |
+| Companhia das Letras |          1995 |
+| Editora Rocco        |          1997 |
+| Planeta              |          1998 |
+| Alfaguara            |          2002 |
+| Companhia das Letras |          2005 |
++----------------------+---------------+
+16 rows in set (0.00 sec)
+
+mysql> select e.nome, l.ano as ano_publicado
+    -> from livros l
+    -> join editoras e on l.id_editora = e.id
+    -> where l.ano = '1998';
++---------+---------------+
+| nome    | ano_publicado |
++---------+---------------+
+| Planeta |          1998 |
++---------+---------------+
+1 row in set (0.00 sec)
+
+mysql> select * from editoras
+    -> order by nome;
++----+----------------------+----------------+----------------+
+| id | nome                 | cidade         | país           |
++----+----------------------+----------------+----------------+
+| 10 | Alfaguara            | Madri          | Espanha        |
+|  1 | Companhia das Letras | São Paulo      | Brasil         |
+|  2 | Editora Rocco        | Rio de Janeiro | Brasil         |
+|  7 | Gallimard            | Paris          | França         |
+|  4 | HarperCollins        | Nova Iorque    | Estados Unidos |
+|  9 | Kodansha             | Tóquio         | Japão          |
+|  8 | Mondadori            | Milão          | Itália         |
+|  3 | Penguin Books        | Londres        | Reino Unido    |
+|  6 | Planeta              | Barcelona      | Espanha        |
+|  5 | Simon & Schuster     | Nova Iorque    | Estados Unidos |
++----+----------------------+----------------+----------------+
+10 rows in set (0.00 sec)
+
+mysql> select e.id, e.nome
+    -> from editoras e
+    -> left join livros l on a.id = l.id_editora
+    -> where l.id is null;
+ERROR 1054 (42S22): Unknown column 'a.id' in 'on clause'
+mysql> select e.id, e.nome
+    -> from editoras e
+    -> left join livros l on e.id = l.id_editora
+    -> where l.id is null;
++----+---------------+
+| id | nome          |
++----+---------------+
+|  4 | HarperCollins |
+|  8 | Mondadori     |
++----+---------------+
+2 rows in set (0.00 sec)
+
+mysql> select * from clientes
+    -> order by nome;
++----+-----------------------+-------------------------+-------------+-------------------------------------------+
+| id | nome                  | email                   | telefone    | endereço                                  |
++----+-----------------------+-------------------------+-------------+-------------------------------------------+
+|  1 | Ana Beatriz Souza     | ana.souza@email.com     | 11912345678 | Rua das Flores, 123 ? São Paulo/SP        |
+|  7 | Camila Ferreira Dias  | camila.fd@email.com     | 71996667777 | Rua das Acácias, 55 ? Salvador/BA         |
+|  2 | Carlos Henrique Lima  | carlos.hlima@email.com  | 21998765432 | Av. Atlântica, 456 ? Rio de Janeiro/RJ    |
+|  3 | Fernanda Oliveira     | fernanda.o@email.com    | 31987654321 | Rua Minas Gerais, 789 ? Belo Horizonte/MG |
+|  4 | João Pedro Martins    | joaopedro.m@email.com   | 41912340000 | Rua Paraná, 101 ? Curitiba/PR             |
+|  9 | Juliana Mendes Rocha  | juliana.mr@email.com    | 95993332222 | Rua das Árvores, 88 ? Boa Vista/RR        |
+|  5 | Larissa Almeida Costa | larissa.costa@email.com | 51999998888 | Av. Ipiranga, 2020 ? Porto Alegre/RS      |
+| 10 | Marcelo Antunes Rocha | marcelo.ar@email.com    | 27982221111 | Av. Vitória, 900 ? Vitória/ES             |
+|  6 | Ricardo Nunes Barros  | ricardo.nb@email.com    | 61981234567 | SHN Quadra 2 ? Brasília/DF                |
+|  8 | Tiago Ramos Santana   | tiago.rs@email.com      | 85994443333 | Av. Beira Mar, 77 ? Fortaleza/CE          |
++----+-----------------------+-------------------------+-------------+-------------------------------------------+
+10 rows in set (0.00 sec)
+
+mysql> select c.nome, v.id
+    -> from vendas v
+    -> left join clientes c on v.id_cliente = c.id
+    -> where v.id_livro = 15;
++----------------------+----+
+| nome                 | id |
++----------------------+----+
+| Juliana Mendes Rocha |  9 |
++----------------------+----+
+1 row in set (0.00 sec)
+
+mysql> select c.nome, v.id as venda_id, l.nome as livro
+    -> ^C
+mysql> select c.nome as cliente, v.id as venda_id
+    -> from vendas v
+    -> join clientes c on v.id_cliente = c.id
+    -> ^C
+mysql> select c.nome as cliente, v.id as venda_id, l.título as livro
+    -> from vendas v
+    -> join clientes c on v.id_cliente = c.id
+    -> join livros l on v.id_livro = l.id
+    -> where id livro = 13;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'livro = 13' at line 5
+mysql> select c.nome as cliente, v.id as venda_id, l.título as livro
+    -> from vendas v
+    -> join clientes c on v.id_cliente = c.id
+    -> join livros l on v.id_livro = l.id
+    -> where l.id = 13;
++-----------------------+----------+----------------+
+| cliente               | venda_id | livro          |
++-----------------------+----------+----------------+
+| Larissa Almeida Costa |        5 | Norwegian Wood |
++-----------------------+----------+----------------+
+1 row in set (0.00 sec)
+
+mysql> select c.nome, count(v.id) as quantidade_compras
+    -> from vendas v
+    -> join clientes c on v.id_cliente = c.id
+    -> group by c.nome;
++-----------------------+--------------------+
+| nome                  | quantidade_compras |
++-----------------------+--------------------+
+| Ana Beatriz Souza     |                  1 |
+| Carlos Henrique Lima  |                  1 |
+| Fernanda Oliveira     |                  1 |
+| João Pedro Martins    |                  1 |
+| Larissa Almeida Costa |                  1 |
+| Ricardo Nunes Barros  |                  1 |
+| Camila Ferreira Dias  |                  1 |
+| Tiago Ramos Santana   |                  1 |
+| Juliana Mendes Rocha  |                  1 |
+| Marcelo Antunes Rocha |                  1 |
++-----------------------+--------------------+
+10 rows in set (0.00 sec)
+
+mysql> select nome from clientes where endereço like '%São Paulo%;
+    '>
+    '> ^C
+mysql> select nome from clientes where endereço like '%São Paulo%;
+    '>  ^C
+mysql> select * from clientes where endereço like '%São Paulo%;
+    '> ^C
+mysql> select nome from clientes where endereço like '%São Paulo%';
++-------------------+
+| nome              |
++-------------------+
+| Ana Beatriz Souza |
++-------------------+
+1 row in set (0.00 sec)
+
+mysql> select c.nome, c.id
+    -> from clintes c
+    -> left join vendas v on c.id = v.id_cliente
+    -> where v.id is null;
+ERROR 1146 (42S02): Table 'livraria.clintes' doesn't exist
+mysql> select c.nome, c.id
+    -> from clientes c
+    -> left join vendas v on c.id = v.id_cliente
+    -> where v.id is null;
+Empty set (0.00 sec)
+
+mysql> select * from vendas order by data desc;
++----+------------+------------+----------+------------+--------+
+| id | data       | id_cliente | id_livro | quantidade | total  |
++----+------------+------------+----------+------------+--------+
+| 10 | 2025-06-10 |         10 |       16 |          1 |  39.90 |
+|  9 | 2025-06-09 |          9 |       15 |          2 |  70.00 |
+|  8 | 2025-06-08 |          8 |       14 |          1 |  51.90 |
+|  7 | 2025-06-07 |          7 |        7 |          1 |  46.50 |
+|  6 | 2025-06-06 |          6 |       10 |          2 |  76.00 |
+|  5 | 2025-06-05 |          5 |       13 |          1 |  44.00 |
+|  4 | 2025-06-04 |          4 |        6 |          3 | 119.70 |
+|  3 | 2025-06-03 |          3 |        3 |          1 |  52.00 |
+|  2 | 2025-06-02 |          2 |        4 |          2 |  99.80 |
+|  1 | 2025-06-01 |          1 |        1 |          1 |  59.90 |
++----+------------+------------+----------+------------+--------+
+10 rows in set (0.00 sec)
+
+mysql> select count(total * quantidade) as total_vendas from vendas;
++--------------+
+| total_vendas |
++--------------+
+|           10 |
++--------------+
+1 row in set (0.01 sec)
+
+mysql> select sum(total * quantidade) as total_vendas from vendas;
++--------------+
+| total_vendas |
++--------------+
+|      1144.90 |
++--------------+
+1 row in set (0.00 sec)
+
+mysql> select max(preço) as venda_maior from vendas;
+ERROR 1054 (42S22): Unknown column 'preço' in 'field list'
+mysql> select max(total) as venda_maior from vendas;
++-------------+
+| venda_maior |
++-------------+
+|      119.70 |
++-------------+
+1 row in set (0.01 sec)
+
+mysql> select * from vendas order by quantidade
+    -> limit 3;
++----+------------+------------+----------+------------+-------+
+| id | data       | id_cliente | id_livro | quantidade | total |
++----+------------+------------+----------+------------+-------+
+|  1 | 2025-06-01 |          1 |        1 |          1 | 59.90 |
+| 10 | 2025-06-10 |         10 |       16 |          1 | 39.90 |
+|  3 | 2025-06-03 |          3 |        3 |          1 | 52.00 |
++----+------------+------------+----------+------------+-------+
+3 rows in set (0.00 sec)
+
+mysql> select * from vendas order by quantidade desc
+    -> limit 3;
++----+------------+------------+----------+------------+--------+
+| id | data       | id_cliente | id_livro | quantidade | total  |
++----+------------+------------+----------+------------+--------+
+|  4 | 2025-06-04 |          4 |        6 |          3 | 119.70 |
+|  2 | 2025-06-02 |          2 |        4 |          2 |  99.80 |
+|  6 | 2025-06-06 |          6 |       10 |          2 |  76.00 |
++----+------------+------------+----------+------------+--------+
+3 rows in set (0.00 sec)
+
+mysql> select l.título, quantidade as vendas
+    -> ^C
+mysql> select l.título, v.quantidade as vendas
+    -> from vendas v
+    -> join livros l on v.id_livro = l.id
+    -> order by quantidade desc;
++----------------------------------+--------+
+| título                           | vendas |
++----------------------------------+--------+
+| O Alquimista                     |      3 |
+| Harry Potter e a Pedra Filosofal |      2 |
+| O Velho e o Mar                  |      2 |
+| A Hora da Estrela                |      2 |
+| Cem Anos de Solidão              |      1 |
+| Ensaio sobre a Cegueira          |      1 |
+| Norwegian Wood                   |      1 |
+| 1984                             |      1 |
+| A Casa dos Espíritos             |      1 |
+| Veronika Decide Morrer           |      1 |
++----------------------------------+--------+
+10 rows in set (0.00 sec)
+
+mysql> select l.título, v.quantidade as vendas
+    -> from vendas v
+    -> join livros l on v.id_livro = l.id
+    -> order by quantidade desc
+    -> limit 3;
++----------------------------------+--------+
+| título                           | vendas |
++----------------------------------+--------+
+| O Alquimista                     |      3 |
+| Harry Potter e a Pedra Filosofal |      2 |
+| O Velho e o Mar                  |      2 |
++----------------------------------+--------+
+3 rows in set (0.00 sec)
+
+mysql> select sum(total * quantidade) as total_vendas from vendas;
++--------------+
+| total_vendas |
++--------------+
+|      1144.90 |
++--------------+
+1 row in set (0.00 sec)
+
+mysql> select * from estoque;
++----------+------------+----------------------+
+| id_livro | quantidade | localização          |
++----------+------------+----------------------+
+|        1 |         12 | Estante A1 - Prat. 3 |
+|        4 |          8 | Estante B2 - Prat. 1 |
+|        3 |          5 | Estante C1 - Prat. 2 |
+|        6 |         20 | Estante A3 - Prat. 4 |
+|       13 |          7 | Estante D1 - Prat. 1 |
+|       10 |         10 | Estante B1 - Prat. 3 |
+|        7 |          6 | Estante C3 - Prat. 2 |
+|       14 |          4 | Estante D2 - Prat. 4 |
+|       15 |         15 | Estante A2 - Prat. 1 |
+|       16 |          9 | Estante B3 - Prat. 2 |
++----------+------------+----------------------+
+10 rows in set (0.00 sec)
+
+mysql> select * from estoque where quantidade > 10;
++----------+------------+----------------------+
+| id_livro | quantidade | localização          |
++----------+------------+----------------------+
+|        1 |         12 | Estante A1 - Prat. 3 |
+|        6 |         20 | Estante A3 - Prat. 4 |
+|       15 |         15 | Estante A2 - Prat. 1 |
++----------+------------+----------------------+
+3 rows in set (0.00 sec)
+
+mysql> select * from estoque where quantidade < 5;
++----------+------------+----------------------+
+| id_livro | quantidade | localização          |
++----------+------------+----------------------+
+|       14 |          4 | Estante D2 - Prat. 4 |
++----------+------------+----------------------+
+1 row in set (0.00 sec)
+
+mysql> select quantidade from estoque where localização = 'Estante A1 - Prat. 3';
++------------+
+| quantidade |
++------------+
+|         12 |
++------------+
+1 row in set (0.00 sec)
+
+mysql> select * from estoque where quantidade = 0;
+Empty set (0.00 sec)
+
+mysql> select max(quantidade) as maior_quantidade from estoque;
++------------------+
+| maior_quantidade |
++------------------+
+|               20 |
++------------------+
+1 row in set (0.00 sec)
+
+mysql> select l.id, l.título from livros l
+    -> left join estoque e on ^C
+mysql> select e.id_livro, l.título from estoque e
+    -> left join livros l on e.id_livro = l.id
+    -> where e.id is null
+    -> ;
+ERROR 1054 (42S22): Unknown column 'e.id' in 'where clause'
+mysql> select e.id_livro, l.título from estoque e
+    -> left join livros l on e.id_livro = l.id
+    -> where e.id_livro is null;
+Empty set (0.00 sec)
+
+mysql> select e.id_livro, l.título from estoque e
+    -> left join livros l on e.id_livro = l.id
+    -> where l.id is null;
+Empty set (0.00 sec)
+
+mysql> select l.id, l.título from livros l
+    -> left join estoque e on l.id = e.id_livro
+    -> where e.id_livro is null;
++----+--------------------------------+
+| id | título                         |
++----+--------------------------------+
+|  2 | Crônica de uma Morte Anunciada |
+|  5 | Kafka à Beira-Mar              |
+|  8 | Esaú e Jacó                    |
+|  9 | Mrs. Dalloway                  |
+| 11 | As Intermitências da Morte     |
+| 12 | Amor nos Tempos do Cólera      |
++----+--------------------------------+
+6 rows in set (0.00 sec)

@@ -1,0 +1,301 @@
+Enter password: ****
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 13
+Server version: 8.0.42 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2025, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> create database clinica_medica;
+Query OK, 1 row affected (0.06 sec)
+
+mysql> use clinica_medica
+Database changed
+mysql> create table pacientes (id int auto_increment, nome varchar(100), data_nasc date, telefone char(15), email varchar(100), primary key(id));
+Query OK, 0 rows affected (0.12 sec)
+
+mysql> create table medicos (id int auto_increment, nome varchar(100), especialidade varchar(80), CRM varchar(100), telefone char(15), primary key(id));
+Query OK, 0 rows affected (0.08 sec)
+
+mysql> create table consultas (id int auto_increment, data datetime, id_medico int, id_paciente int, status varchar(50), primary key(id), foreign key(id_medico) references medicos(id), foreign key(id_paciente) references pacientes(id));
+Query OK, 0 rows affected (0.12 sec)
+
+mysql> create table salas (numero char(3), tipo varchar(80));
+Query OK, 0 rows affected (0.09 sec)
+
+mysql> insert into pacientes (nome, data_nasc, telefone, email) values
+    -> ("Ana Carolina Mendes", '^C
+mysql> alter table pacientes add column cpf char(14);
+Query OK, 0 rows affected (0.16 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> describe pacientes;
++-----------+--------------+------+-----+---------+----------------+
+| Field     | Type         | Null | Key | Default | Extra          |
++-----------+--------------+------+-----+---------+----------------+
+| id        | int          | NO   | PRI | NULL    | auto_increment |
+| nome      | varchar(100) | YES  |     | NULL    |                |
+| data_nasc | date         | YES  |     | NULL    |                |
+| telefone  | char(15)     | YES  |     | NULL    |                |
+| email     | varchar(100) | YES  |     | NULL    |                |
+| cpf       | char(14)     | YES  |     | NULL    |                |
++-----------+--------------+------+-----+---------+----------------+
+6 rows in set (0.06 sec)
+
+mysql> insert into pacientes (nome, data_nasc, telefone, email, cpf) values
+    -> ('Ana Carolina Mendes', '1987-05-12', '(11) 91234-5678', 'ana.mendes@gmail.com', '123.456.789-00'),
+    -> ('Bruno Henrique Silva', '1992-08-23', '(21) 99876-5432', 'brunohenrique@hotmail.com', '234.567.890-11'),
+    -> ('Camila Souza Oliveira', '1984-03-30', '(31) 98765-4321', 'camila.souza@yahoo.com', '345.678.901-22'),
+    -> ('Diego Almeida Costa', '2000-12-14', '(51) 97654-3210', 'diego.costa@outlook.com', '456.789.012-33'),
+    -> ('Érica Nogueira Lima', '1995-07-01', '(71) 96543-2109', 'erica.lima@gmail.com', '567.890.123-44'),
+    -> ('Felipe Ramos Duarte', '1978-11-09', '(85) 95432-1098', 'felipe.ramos@uol.com.br', '678.901.234-55'),
+    -> ('Gabriela Pinto Rocha', '1990-04-25', '(41) 94321-0987', 'gabriela.rocha@hotmail.com', '789.012.345-66'),
+    -> ('Henrique Lopes Barros', '1982-09-18', '(61) 93210-9876', 'henrique.barros@gmail.com', '890.123.456-77');
+Query OK, 8 rows affected (0.02 sec)
+Records: 8  Duplicates: 0  Warnings: 0
+
+mysql> insert into medicos (nome, especialidade, CRM, telefone) values
+    -> ('Dr. Marcos Lima Rocha', 'Clínica Geral', '123456-SP', '(11) 98765-4321'),
+    -> ('Dra. Fernanda Alves Dias', 'Ginecologia', '234567-SP', '(11) 97654-3210'),
+    -> ('Dr. Ricardo Pires Souza', 'Ortopedia', '345678-SP', '(11) 96543-2109'),
+    -> ('Dra. Juliana Torres Melo', 'Pediatria', '456789-SP', '(11) 95432-1098');
+Query OK, 4 rows affected (0.02 sec)
+Records: 4  Duplicates: 0  Warnings: 0
+
+mysql> insert into salas (numero, tipo) values
+    -> ('101', 'Atendimento Geral'),
+    -> ('102', 'Exames Laboratoriais'),
+    -> ('103', 'Pediatria'),
+    -> ('104', 'Ginecologia'),
+    -> ('105', 'Raio-X');
+Query OK, 5 rows affected (0.02 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+mysql> insert into consultas (data, id_medico, id_paciente, status) values
+    -> ('2025-07-08 09:00', )^C
+mysql> select * from medicos;
++----+--------------------------+---------------+-----------+-----------------+
+| id | nome                     | especialidade | CRM       | telefone        |
++----+--------------------------+---------------+-----------+-----------------+
+|  1 | Dr. Marcos Lima Rocha    | Clínica Geral | 123456-SP | (11) 98765-4321 |
+|  2 | Dra. Fernanda Alves Dias | Ginecologia   | 234567-SP | (11) 97654-3210 |
+|  3 | Dr. Ricardo Pires Souza  | Ortopedia     | 345678-SP | (11) 96543-2109 |
+|  4 | Dra. Juliana Torres Melo | Pediatria     | 456789-SP | (11) 95432-1098 |
++----+--------------------------+---------------+-----------+-----------------+
+4 rows in set (0.00 sec)
+
+mysql> select * from pacientes;
++----+-----------------------+------------+-----------------+----------------------------+----------------+
+| id | nome                  | data_nasc  | telefone        | email                      | cpf            |
++----+-----------------------+------------+-----------------+----------------------------+----------------+
+|  1 | Ana Carolina Mendes   | 1987-05-12 | (11) 91234-5678 | ana.mendes@gmail.com       | 123.456.789-00 |
+|  2 | Bruno Henrique Silva  | 1992-08-23 | (21) 99876-5432 | brunohenrique@hotmail.com  | 234.567.890-11 |
+|  3 | Camila Souza Oliveira | 1984-03-30 | (31) 98765-4321 | camila.souza@yahoo.com     | 345.678.901-22 |
+|  4 | Diego Almeida Costa   | 2000-12-14 | (51) 97654-3210 | diego.costa@outlook.com    | 456.789.012-33 |
+|  5 | Érica Nogueira Lima   | 1995-07-01 | (71) 96543-2109 | erica.lima@gmail.com       | 567.890.123-44 |
+|  6 | Felipe Ramos Duarte   | 1978-11-09 | (85) 95432-1098 | felipe.ramos@uol.com.br    | 678.901.234-55 |
+|  7 | Gabriela Pinto Rocha  | 1990-04-25 | (41) 94321-0987 | gabriela.rocha@hotmail.com | 789.012.345-66 |
+|  8 | Henrique Lopes Barros | 1982-09-18 | (61) 93210-9876 | henrique.barros@gmail.com  | 890.123.456-77 |
++----+-----------------------+------------+-----------------+----------------------------+----------------+
+8 rows in set (0.00 sec)
+
+mysql> insert into consultas (data, id_medico, id_paciente, status) values
+    -> ('2025-07-08 09:00', 1, 1, 'Agendada'),
+    -> ('2025-07-08 10:30', 2, 3, 'Agendada'),
+    -> ('2025-07-07 14:00', 3, 4, 'Realizada'),
+    -> ('2025-07-06 16:00', 4, 7, 'Cancelada'),
+    -> ('2025-07-08 11:00', 1, 2, 'Agendada'),
+    -> ('2025-07-05 15:00', 3, 8, 'Realizada'),
+    -> ('2025-07-07 09:30', 4, 5, 'Realizada'),
+    -> ('2025-07-06 13:00', 2, 6, 'Cancelada');
+Query OK, 8 rows affected (0.02 sec)
+Records: 8  Duplicates: 0  Warnings: 0
+
+mysql> select * from consultas where id_medico = 2;
++----+---------------------+-----------+-------------+-----------+
+| id | data                | id_medico | id_paciente | status    |
++----+---------------------+-----------+-------------+-----------+
+|  2 | 2025-07-08 10:30:00 |         2 |           3 | Agendada  |
+|  8 | 2025-07-06 13:00:00 |         2 |           6 | Cancelada |
++----+---------------------+-----------+-------------+-----------+
+2 rows in set (0.00 sec)
+
+mysql> select * from consultas;
++----+---------------------+-----------+-------------+-----------+
+| id | data                | id_medico | id_paciente | status    |
++----+---------------------+-----------+-------------+-----------+
+|  1 | 2025-07-08 09:00:00 |         1 |           1 | Agendada  |
+|  2 | 2025-07-08 10:30:00 |         2 |           3 | Agendada  |
+|  3 | 2025-07-07 14:00:00 |         3 |           4 | Realizada |
+|  4 | 2025-07-06 16:00:00 |         4 |           7 | Cancelada |
+|  5 | 2025-07-08 11:00:00 |         1 |           2 | Agendada  |
+|  6 | 2025-07-05 15:00:00 |         3 |           8 | Realizada |
+|  7 | 2025-07-07 09:30:00 |         4 |           5 | Realizada |
+|  8 | 2025-07-06 13:00:00 |         2 |           6 | Cancelada |
++----+---------------------+-----------+-------------+-----------+
+8 rows in set (0.00 sec)
+
+mysql> select * p, c.id_paciente from consultas
+    -> ^C
+mysql> select * p, c.id_paciente from consultas c
+    -> join pacientes p on c^C
+mysql> select * p, count(c.id_paciente) from consultas c
+    -> join pacientes p on c.id_paciente = p.id
+    -> group by id;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'p, count(c.id_paciente) from consultas c
+join pacientes p on c.id_paciente = p.i' at line 1
+mysql> select p.nome, p.cpf, p.email, p.telefone, p.data_nasc, count(c.id_paciente) from consultas c
+    -> join pacientes p on c.id
+    -> ^C
+mysql> select p.nome, p.cpf, p.email, p.telefone, p.data_nasc, count(c.id_paciente) from consultas c
+    -> join pacientes p on c.id_paciente = p.id
+    -> group by nome;
+ERROR 1055 (42000): Expression #2 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'clinica_medica.p.cpf' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+mysql> select p.nome, p.cpf, p.email, p.telefone, p.data_nasc, count(c.id_paciente) from consultas c
+    -> join pacientes p on c.id
+    -> join pacientes p on c.id^C
+mysql> select p.nome, p.cpf, p.email, p.telefone, p.data_nasc, count(c.id_paciente) from consultas c
+    -> join pacientes p on c.id_paciente = p.id
+    -> order by nome;
+ERROR 1140 (42000): In aggregated query without GROUP BY, expression #1 of SELECT list contains nonaggregated column 'clinica_medica.p.nome'; this is incompatible with sql_mode=only_full_group_by
+mysql> select p.nome, p.cpf, p.email, p.telefone, p.data_nasc, count(c.id_paciente) from pacientes p
+    -> select p.nome, p.cpf, p.email, p.telefone, p.data_nasc, count(c.id_paciente) from pacientes p^C
+mysql> select p.nome, p.cpf, p.email, p.telefone, p.data_nasc, count(c.id_paciente) from consultas c
+    -> join pacientes p on c.id_paciente = p.id
+    -> group by id_paciente;
++-----------------------+----------------+----------------------------+-----------------+------------+----------------------+
+| nome                  | cpf            | email                      | telefone        | data_nasc  | count(c.id_paciente) |
++-----------------------+----------------+----------------------------+-----------------+------------+----------------------+
+| Ana Carolina Mendes   | 123.456.789-00 | ana.mendes@gmail.com       | (11) 91234-5678 | 1987-05-12 |                    1 |
+| Bruno Henrique Silva  | 234.567.890-11 | brunohenrique@hotmail.com  | (21) 99876-5432 | 1992-08-23 |                    1 |
+| Camila Souza Oliveira | 345.678.901-22 | camila.souza@yahoo.com     | (31) 98765-4321 | 1984-03-30 |                    1 |
+| Diego Almeida Costa   | 456.789.012-33 | diego.costa@outlook.com    | (51) 97654-3210 | 2000-12-14 |                    1 |
+| Érica Nogueira Lima   | 567.890.123-44 | erica.lima@gmail.com       | (71) 96543-2109 | 1995-07-01 |                    1 |
+| Felipe Ramos Duarte   | 678.901.234-55 | felipe.ramos@uol.com.br    | (85) 95432-1098 | 1978-11-09 |                    1 |
+| Gabriela Pinto Rocha  | 789.012.345-66 | gabriela.rocha@hotmail.com | (41) 94321-0987 | 1990-04-25 |                    1 |
+| Henrique Lopes Barros | 890.123.456-77 | henrique.barros@gmail.com  | (61) 93210-9876 | 1982-09-18 |                    1 |
++-----------------------+----------------+----------------------------+-----------------+------------+----------------------+
+8 rows in set (0.01 sec)
+
+mysql> select * from consultas;
++----+---------------------+-----------+-------------+-----------+
+| id | data                | id_medico | id_paciente | status    |
++----+---------------------+-----------+-------------+-----------+
+|  1 | 2025-07-08 09:00:00 |         1 |           1 | Agendada  |
+|  2 | 2025-07-08 10:30:00 |         2 |           3 | Agendada  |
+|  3 | 2025-07-07 14:00:00 |         3 |           4 | Realizada |
+|  4 | 2025-07-06 16:00:00 |         4 |           7 | Cancelada |
+|  5 | 2025-07-08 11:00:00 |         1 |           2 | Agendada  |
+|  6 | 2025-07-05 15:00:00 |         3 |           8 | Realizada |
+|  7 | 2025-07-07 09:30:00 |         4 |           5 | Realizada |
+|  8 | 2025-07-06 13:00:00 |         2 |           6 | Cancelada |
++----+---------------------+-----------+-------------+-----------+
+8 rows in set (0.00 sec)
+
+mysql> insert into consultas (data, id_medico, id_paciente, status) values
+    -> ('2025-07-06 10:00:00', 2, 4, 'Realizada'),
+    -> ('2025-07-06 11:00:00', 4, 3, 'Realizada');
+Query OK, 2 rows affected (0.02 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+mysql> select p.nome, p.cpf, p.email, p.telefone, p.data_nasc, count(c.id_paciente) as quantidade_consultas from consultas c
+    -> join pacientes p on c.id_paciente = p.id
+    -> group by id_paciente
+    -> where quantidade_consultas > 1;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'where quantidade_consultas > 1' at line 4
+mysql> select p.nome, p.cpf, p.email, p.telefone, p.data_nasc, count(c.id_paciente) as quantidade_consultas from consultas c
+    -> join pacientes p on c.id_paciente = p.id
+    -> where quantidade_consultas > 1;
+ERROR 1054 (42S22): Unknown column 'quantidade_consultas' in 'where clause'
+mysql> select p.nome, p.cpf, p.email, p.telefone, p.data_nasc, count(c.id_paciente) as quantidade_consultas from consultas c
+    -> join pacientes p on c.id_paciente = p.id
+    -> group by id_paciente;
++-----------------------+----------------+----------------------------+-----------------+------------+----------------------+
+| nome                  | cpf            | email                      | telefone        | data_nasc  | quantidade_consultas |
++-----------------------+----------------+----------------------------+-----------------+------------+----------------------+
+| Ana Carolina Mendes   | 123.456.789-00 | ana.mendes@gmail.com       | (11) 91234-5678 | 1987-05-12 |                    1 |
+| Bruno Henrique Silva  | 234.567.890-11 | brunohenrique@hotmail.com  | (21) 99876-5432 | 1992-08-23 |                    1 |
+| Camila Souza Oliveira | 345.678.901-22 | camila.souza@yahoo.com     | (31) 98765-4321 | 1984-03-30 |                    2 |
+| Diego Almeida Costa   | 456.789.012-33 | diego.costa@outlook.com    | (51) 97654-3210 | 2000-12-14 |                    2 |
+| Érica Nogueira Lima   | 567.890.123-44 | erica.lima@gmail.com       | (71) 96543-2109 | 1995-07-01 |                    1 |
+| Felipe Ramos Duarte   | 678.901.234-55 | felipe.ramos@uol.com.br    | (85) 95432-1098 | 1978-11-09 |                    1 |
+| Gabriela Pinto Rocha  | 789.012.345-66 | gabriela.rocha@hotmail.com | (41) 94321-0987 | 1990-04-25 |                    1 |
+| Henrique Lopes Barros | 890.123.456-77 | henrique.barros@gmail.com  | (61) 93210-9876 | 1982-09-18 |                    1 |
++-----------------------+----------------+----------------------------+-----------------+------------+----------------------+
+8 rows in set (0.01 sec)
+
+mysql> select p.nome, p.cpf, p.email, p.telefone, p.data_nasc, count(c.id_paciente) as quantidade_consultas from consultas c
+    -> join pacientes p on c.id_paciente = p.id
+    -> group by id_paciente
+    -> where count(id_paciente) > 1;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'where count(id_paciente) > 1' at line 4
+mysql> select p.nome, p.cpf, p.email, p.telefone, p.data_nasc, count(c.id_paciente) as quantidade_consultas from consultas c
+    -> join pacientes p on c.id_paciente = p.id
+    -> group by id_paciente
+    -> where status = 'Realizada'
+    -> having count(id_)
+    -> group by id_paciente^C
+mysql> select p.nome, p.cpf, p.email, p.telefone, p.data_nasc, count(c.id_paciente) as quantidade_consultas from consultas c
+    -> join pacientes p on c.id_paciente = p.id
+    -> group by id_paciente
+    -> where status = 'Realizada'
+    -> having count(id_paciente) > 1;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'where status = 'Realizada'
+having count(id_paciente) > 1' at line 4
+mysql> having count(c.id_paciente) > 1;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'having count(c.id_paciente) > 1' at line 1
+mysql> select p.nome, p.cpf, p.email, p.telefone, p.data_nasc, count(c.id_paciente) as quantidade_consultas from consultas c
+    -> join pacientes p on c.id_paciente = p.id
+    -> group by id_paciente
+    -> where status = 'Realizada'
+    -> having count(c.id_paciente) > 1;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'where status = 'Realizada'
+having count(c.id_paciente) > 1' at line 4
+mysql> select p.nome, p.cpf, p.email, p.telefone, p.data_nasc, count(c.id_paciente) as quantidade_consultas from consultas c
+    -> join pacientes p on c.id_paciente = p.id
+    -> group by c.id_paciente
+    -> where c.status = 'Realizada'
+    -> having count(c.id_paciente) > 1;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'where c.status = 'Realizada'
+having count(c.id_paciente) > 1' at line 4
+mysql> select p.nome, p.cpf, p.email, p.telefone, p.data_nasc, count(c.id_paciente) as quantidade_consultas from consultas c
+    -> join pacientes p on c.id_paciente = p.id
+    -> where c.status = 'Realizada'
+    -> group by c.id_paciente
+    -> having count(c.id_paciente) > 1;
++---------------------+----------------+-------------------------+-----------------+------------+----------------------+
+| nome                | cpf            | email                   | telefone        | data_nasc  | quantidade_consultas |
++---------------------+----------------+-------------------------+-----------------+------------+----------------------+
+| Diego Almeida Costa | 456.789.012-33 | diego.costa@outlook.com | (51) 97654-3210 | 2000-12-14 |                    2 |
++---------------------+----------------+-------------------------+-----------------+------------+----------------------+
+1 row in set (0.01 sec)
+
+mysql> update consultas
+    -> set status = 'Reazlizada'
+    -> where id = 1;
+Query OK, 1 row affected (0.02 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from consultas;
++----+---------------------+-----------+-------------+------------+
+| id | data                | id_medico | id_paciente | status     |
++----+---------------------+-----------+-------------+------------+
+|  1 | 2025-07-08 09:00:00 |         1 |           1 | Reazlizada |
+|  2 | 2025-07-08 10:30:00 |         2 |           3 | Agendada   |
+|  3 | 2025-07-07 14:00:00 |         3 |           4 | Realizada  |
+|  4 | 2025-07-06 16:00:00 |         4 |           7 | Cancelada  |
+|  5 | 2025-07-08 11:00:00 |         1 |           2 | Agendada   |
+|  6 | 2025-07-05 15:00:00 |         3 |           8 | Realizada  |
+|  7 | 2025-07-07 09:30:00 |         4 |           5 | Realizada  |
+|  8 | 2025-07-06 13:00:00 |         2 |           6 | Cancelada  |
+|  9 | 2025-07-06 10:00:00 |         2 |           4 | Realizada  |
+| 10 | 2025-07-06 11:00:00 |         4 |           3 | Realizada  |
++----+---------------------+-----------+-------------+------------+
+10 rows in set (0.00 sec)
+
+mysql>

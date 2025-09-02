@@ -1,0 +1,322 @@
+mysql> create database lojaOnline;
+Query OK, 1 row affected (0.02 sec)
+
+mysql> create table clientes (id int primary key auto_increment, nome varchar(80), email varchar(100), data_cadastro date);
+ERROR 1046 (3D000): No database selected
+mysql> use lojaOnline;
+Database changed
+mysql> create table clientes (id int primary key auto_increment, nome varchar(80), email varchar(100), data_cadastro date);
+Query OK, 0 rows affected (0.06 sec)
+
+mysql> create table produtos (id int primary key auto_increment, nome varchar(50), preco decimal (10,2), estoque int, categoria varchar(80);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+mysql> create table produtos (id int primary key auto_increment, nome varchar(50), preco decimal(10,2), estoque int, categoria varchar(80));
+Query OK, 0 rows affected (0.06 sec)
+
+mysql> create table pedidos (id int primary key auto_increment, cliente_id int foreign key references cliente(id), data_pedido date, valor_total decimal(10,2));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'foreign key references cliente(id), data_pedido date, valor_total decimal(10,2))' at line 1
+mysql> create table pedidos (id int primary key auto_increment, cliente_id int, data_pedido date, valor_total decimal(10,2), foreign key (cliente_id) references cliente(id));
+ERROR 1824 (HY000): Failed to open the referenced table 'cliente'
+mysql> create table pedidos (id int primary key auto_increment, cliente_id int, data_pedido date, valor_total decimal(10,2), foreign key (cliente_id) references clientes(id));
+Query OK, 0 rows affected (0.07 sec)
+
+mysql> create table itensPedido (id int primary key auto_increment, pedido_id int, produto_id int, quantidade int, subtotal decimal(10,2), foreign key(pedido_id) references pedidos(id), foreign key produto_id references produtos(id));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'references produtos(id))' at line 1
+mysql> create table itensPedido (id int primary key auto_increment, pedido_id int, produto_id int, quantidade int, subtotal decimal(10,2), foreign key(pedido_id) references pedidos(id), foreign key (produto_id) references produtos(id));
+Query OK, 0 rows affected (0.10 sec)
+
+mysql> insert into clientes (nome, email, data_cadastro) values ('Ana Silva', 'ana.silva@gmail.com'),
+    -> ('João Pereira', 'joao.pereira@hotmail.com'),
+    ->
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 2
+mysql> INSERT INTO clientes (nome, email, data_cadastro) VALUES
+    -> ('Ana Souza', 'ana.souza@email.com', '2024-05-01'),
+    -> ('Carlos Mendes', 'carlos.m@email.com', '2024-05-05'),
+    -> ('Fernanda Lima', 'fernanda.lima@email.com', '2024-05-10');
+Query OK, 3 rows affected (0.01 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> INSERT INTO clientes (nome, email, data_cadastro) VALUES
+    -> ('Juliana Martins', 'juliana.m@email.com', '2024-05-12'),
+    -> ('Rafael Costa', 'rafael.c@email.com', '2024-05-14'),
+    -> ('Beatriz Ramos', 'beatriz.r@email.com', '2024-05-18');
+Query OK, 3 rows affected (0.02 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> INSERT INTO clientes (nome, email, data_cadastro) VALUES
+    -> ('Marcos Vinícius', 'marcos.v@email.com', '2024-05-21'),
+    -> ('Tatiane Silva', 'tatiane.s@email.com', '2024-05-21'),
+    -> ('Eduardo Pires', 'eduardo.p@email.com', '2024-05-22'),
+    -> ('Laura Nascimento', 'laura.n@email.com', '2024-05-23');
+Query OK, 4 rows affected (0.02 sec)
+Records: 4  Duplicates: 0  Warnings: 0
+
+mysql> insert into produtos (nome, preco, estoque, categoria) values
+    -> ('Notebook Dell', 4500.00, 10, 'Informática'),
+    -> ('Mouse Logitech', 120.50, 50, 'Periféricos'),
+    -> ('Teclado Mecânico', 300.00, 30, 'Periféricos'),
+    -> ('Smartphone Samsung', 2500.00, 20, 'Celulares'),
+    -> ('Fone Bluetooth', 199.90, 100, 'Acessórios'),
+    -> ('Tablet Lenovo', 1500.00, 15, 'Informática'),
+    -> ('Monitor LG 24"', 900.00, 25, 'Periféricos'),
+    -> ('Carregador USB-C', 89.90, 80, 'Acessórios'),
+    -> ('Impressora HP', 700.00, 10, 'Periféricos'),
+    -> ('Cadeira Gamer', 1200.00, 5, 'Móveis');
+Query OK, 10 rows affected (0.01 sec)
+Records: 10  Duplicates: 0  Warnings: 0
+
+mysql> insert into pedidos (cliente_id, data_pedido, valor_total) values
+    -> (1, '2025-05-20', 4500.00),
+    -> (2, '2025-05-21', 1020.50),
+    -> (6, '2025-05-21', 1800.00),
+    -> (8, '2025-05-24', 4000.00),
+    -> (4, '2025-05-26', 300.00);
+Query OK, 5 rows affected (0.01 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+mysql> insert into itensPedido (pedido_id, produto_id, quantidade, subtotal) values
+    -> (1, 1, 1, 4500.00),
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 2
+mysql> insert into itensPedido (pedido_id, produto_id, quantidade, subtotal) values
+    -> (1, 1, 1, 4500.00);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into itensPedido (pedido_id, produto_id, quantidade, subtotal) values
+    -> (2, 2, 1, 120.50),
+    -> (2, 10, 1, 1200.00);
+Query OK, 2 rows affected (0.02 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+mysql> update pedidos set valor_total = 1120.50 where id = 2;
+Query OK, 1 row affected (0.02 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from pedidos;
++----+------------+-------------+-------------+
+| id | cliente_id | data_pedido | valor_total |
++----+------------+-------------+-------------+
+|  1 |          1 | 2025-05-20  |     4500.00 |
+|  2 |          2 | 2025-05-21  |     1120.50 |
+|  3 |          6 | 2025-05-21  |     1800.00 |
+|  4 |          8 | 2025-05-24  |     4000.00 |
+|  5 |          4 | 2025-05-26  |      300.00 |
++----+------------+-------------+-------------+
+5 rows in set (0.00 sec)
+
+mysql> insert into itensPedido (pedido_id, produto_id, quantidade, subtotal) values
+    -> (3, 9, 1, 1)
+    -> ;
+Query OK, 1 row affected (0.02 sec)
+
+mysql> update itensPedido set subtotal = 700.00 where id = 3;
+Query OK, 1 row affected (0.02 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> insert into itensPedido (pedido_id, produto_id, quantidade, subtotal) values
+    -> (3, 10, 1, 1200.00);
+Query OK, 1 row affected (0.02 sec)
+
+mysql> insert into itensPedido (pedido_id, produto_id, quantidade, subtotal) values
+    -> (4, 4, 1, 2500.00),
+    -> (4, 4, 1, 1500.00);
+Query OK, 2 rows affected (0.02 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+mysql> insert into itensPedido (pedido_id, produto_id, quantidade, subtotal) values
+    -> (5, 3, 1, 300.00);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from clientes;
++----+------------------+-------------------------+---------------+
+| id | nome             | email                   | data_cadastro |
++----+------------------+-------------------------+---------------+
+|  1 | Ana Souza        | ana.souza@email.com     | 2024-05-01    |
+|  2 | Carlos Mendes    | carlos.m@email.com      | 2024-05-05    |
+|  3 | Fernanda Lima    | fernanda.lima@email.com | 2024-05-10    |
+|  4 | Juliana Martins  | juliana.m@email.com     | 2024-05-12    |
+|  5 | Rafael Costa     | rafael.c@email.com      | 2024-05-14    |
+|  6 | Beatriz Ramos    | beatriz.r@email.com     | 2024-05-18    |
+|  7 | Marcos Vinícius  | marcos.v@email.com      | 2024-05-21    |
+|  8 | Tatiane Silva    | tatiane.s@email.com     | 2024-05-21    |
+|  9 | Eduardo Pires    | eduardo.p@email.com     | 2024-05-22    |
+| 10 | Laura Nascimento | laura.n@email.com       | 2024-05-23    |
++----+------------------+-------------------------+---------------+
+10 rows in set (0.00 sec)
+
+mysql> select * from produtos where preco > 50;
++----+--------------------+---------+---------+-------------+
+| id | nome               | preco   | estoque | categoria   |
++----+--------------------+---------+---------+-------------+
+|  1 | Notebook Dell      | 4500.00 |      10 | Informática |
+|  2 | Mouse Logitech     |  120.50 |      50 | Periféricos |
+|  3 | Teclado Mecânico   |  300.00 |      30 | Periféricos |
+|  4 | Smartphone Samsung | 2500.00 |      20 | Celulares   |
+|  5 | Fone Bluetooth     |  199.90 |     100 | Acessórios  |
+|  6 | Tablet Lenovo      | 1500.00 |      15 | Informática |
+|  7 | Monitor LG 24"     |  900.00 |      25 | Periféricos |
+|  8 | Carregador USB-C   |   89.90 |      80 | Acessórios  |
+|  9 | Impressora HP      |  700.00 |      10 | Periféricos |
+| 10 | Cadeira Gamer      | 1200.00 |       5 | Móveis      |
++----+--------------------+---------+---------+-------------+
+10 rows in set (0.00 sec)
+
+mysql> select * from produtos order by preco desc;
++----+--------------------+---------+---------+-------------+
+| id | nome               | preco   | estoque | categoria   |
++----+--------------------+---------+---------+-------------+
+|  1 | Notebook Dell      | 4500.00 |      10 | Informática |
+|  4 | Smartphone Samsung | 2500.00 |      20 | Celulares   |
+|  6 | Tablet Lenovo      | 1500.00 |      15 | Informática |
+| 10 | Cadeira Gamer      | 1200.00 |       5 | Móveis      |
+|  7 | Monitor LG 24"     |  900.00 |      25 | Periféricos |
+|  9 | Impressora HP      |  700.00 |      10 | Periféricos |
+|  3 | Teclado Mecânico   |  300.00 |      30 | Periféricos |
+|  5 | Fone Bluetooth     |  199.90 |     100 | Acessórios  |
+|  2 | Mouse Logitech     |  120.50 |      50 | Periféricos |
+|  8 | Carregador USB-C   |   89.90 |      80 | Acessórios  |
++----+--------------------+---------+---------+-------------+
+10 rows in set (0.00 sec)
+
+mysql> select * from produtos order by preco;
++----+--------------------+---------+---------+-------------+
+| id | nome               | preco   | estoque | categoria   |
++----+--------------------+---------+---------+-------------+
+|  8 | Carregador USB-C   |   89.90 |      80 | Acessórios  |
+|  2 | Mouse Logitech     |  120.50 |      50 | Periféricos |
+|  5 | Fone Bluetooth     |  199.90 |     100 | Acessórios  |
+|  3 | Teclado Mecânico   |  300.00 |      30 | Periféricos |
+|  9 | Impressora HP      |  700.00 |      10 | Periféricos |
+|  7 | Monitor LG 24"     |  900.00 |      25 | Periféricos |
+| 10 | Cadeira Gamer      | 1200.00 |       5 | Móveis      |
+|  6 | Tablet Lenovo      | 1500.00 |      15 | Informática |
+|  4 | Smartphone Samsung | 2500.00 |      20 | Celulares   |
+|  1 | Notebook Dell      | 4500.00 |      10 | Informática |
++----+--------------------+---------+---------+-------------+
+10 rows in set (0.00 sec)
+
+mysql> select nome, data_cadastro from clientes where data_cadastro > '2023-01-01';
++------------------+---------------+
+| nome             | data_cadastro |
++------------------+---------------+
+| Ana Souza        | 2024-05-01    |
+| Carlos Mendes    | 2024-05-05    |
+| Fernanda Lima    | 2024-05-10    |
+| Juliana Martins  | 2024-05-12    |
+| Rafael Costa     | 2024-05-14    |
+| Beatriz Ramos    | 2024-05-18    |
+| Marcos Vinícius  | 2024-05-21    |
+| Tatiane Silva    | 2024-05-21    |
+| Eduardo Pires    | 2024-05-22    |
+| Laura Nascimento | 2024-05-23    |
++------------------+---------------+
+10 rows in set (0.01 sec)
+
+mysql> select sum(quantidade) from produtos;
+ERROR 1054 (42S22): Unknown column 'quantidade' in 'field list'
+mysql> select sum(estoque) from produtos;
++--------------+
+| sum(estoque) |
++--------------+
+|          345 |
++--------------+
+1 row in set (0.00 sec)
+
+mysql> select avg(preco) from produtos;
++-------------+
+| avg(preco)  |
++-------------+
+| 1201.030000 |
++-------------+
+1 row in set (0.00 sec)
+
+mysql> select max(preco) from produtos;
++------------+
+| max(preco) |
++------------+
+|    4500.00 |
++------------+
+1 row in set (0.01 sec)
+
+mysql> select sum(preco * estoque) as valor_total_estoque from produtos;
++---------------------+
+| valor_total_estoque |
++---------------------+
+|           195207.00 |
++---------------------+
+1 row in set (0.01 sec)
+
+mysql> select count(*) from pedidos;
++----------+
+| count(*) |
++----------+
+|        5 |
++----------+
+1 row in set (0.00 sec)
+
+mysql> select categoria, count(categoria) from produtos;
+ERROR 1140 (42000): In aggregated query without GROUP BY, expression #1 of SELECT list contains nonaggregated column 'lojaonline.produtos.categoria'; this is incompatible with sql_mode=only_full_group_by
+mysql> select categoria, count(*) as quantidade from produtos group by categoria;
++-------------+------------+
+| categoria   | quantidade |
++-------------+------------+
+| Informática |          2 |
+| Periféricos |          4 |
+| Celulares   |          1 |
+| Acessórios  |          2 |
+| Móveis      |          1 |
++-------------+------------+
+5 rows in set (0.00 sec)
+
+mysql> select * from pedidos;
++----+------------+-------------+-------------+
+| id | cliente_id | data_pedido | valor_total |
++----+------------+-------------+-------------+
+|  1 |          1 | 2025-05-20  |     4500.00 |
+|  2 |          2 | 2025-05-21  |     1120.50 |
+|  3 |          6 | 2025-05-21  |     1800.00 |
+|  4 |          8 | 2025-05-24  |     4000.00 |
+|  5 |          4 | 2025-05-26  |      300.00 |
++----+------------+-------------+-------------+
+5 rows in set (0.00 sec)
+
+mysql> select * from pedidos;
++----+------------+-------------+-------------+
+| id | cliente_id | data_pedido | valor_total |
++----+------------+-------------+-------------+
+|  1 |          1 | 2025-05-20  |     4500.00 |
+|  2 |          2 | 2025-05-21  |     1120.50 |
+|  3 |          6 | 2025-05-21  |     1800.00 |
+|  4 |          8 | 2025-05-24  |     4000.00 |
+|  5 |          4 | 2025-05-26  |      300.00 |
++----+------------+-------------+-------------+
+5 rows in set (0.00 sec)
+
+mysql> select p.id, c.nome as cliente from produtos p inner join clientes c on cliente_id = c.id;
+ERROR 1054 (42S22): Unknown column 'cliente_id' in 'on clause'
+mysql> select p.id, c.nome as cliente from pedidos p inner join clientes c on cliente_id = c.id;
++----+-----------------+
+| id | cliente         |
++----+-----------------+
+|  1 | Ana Souza       |
+|  2 | Carlos Mendes   |
+|  5 | Juliana Martins |
+|  3 | Beatriz Ramos   |
+|  4 | Tatiane Silva   |
++----+-----------------+
+5 rows in set (0.00 sec)
+
+mysql> select p.id as pedido, c.nome as cliente from pedidos p inner join clientes c on cliente_id = c.id;
++--------+-----------------+
+| pedido | cliente         |
++--------+-----------------+
+|      1 | Ana Souza       |
+|      2 | Carlos Mendes   |
+|      5 | Juliana Martins |
+|      3 | Beatriz Ramos   |
+|      4 | Tatiane Silva   |
++--------+-----------------+
+5 rows in set (0.00 sec)
+
+mysql>

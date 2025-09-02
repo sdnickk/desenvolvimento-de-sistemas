@@ -1,0 +1,453 @@
+mysql> use escola
+Database changed
+mysql>
+mysql> insert into turmas (nome_turma, ano) values ("turma A", 2);
+Query OK, 1 row affected (0.02 sec)
+
+mysql> update turmas set nome_turma = "turma 2A" where id = 1;
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> insert into turmas (nome_turma, ano) values ("turma 2B", 2);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into turmas (nome_turma, ano) values ("turma 3A", 3);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into turmas (nome_turma, ano) values ("turma 3B", 3);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into turmas (nome_turma, ano) values ("turma 3C", 3);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into alunos (nome, idade, email, turma_id) values ("Nicolas Duarte Padilha", 17, "nicolasduartepadilha@gmail.com", 4);
+Query OK, 1 row affected (0.02 sec)
+
+mysql> insert into alunos (nome, idade, email, turma_id) values ("Anderson Moreira Fogaça", 18, "andersonfogaca@gmail.com", 4);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into alunos (nome, idade, email, turma_id) values ("Kauan Correa Carsten", 16, "carstenxz@gmail.com", 4);o
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into alunos (nome, idade, email, turma_id) values ("Louise Geppert Varela", 15, "louisegvar@gmail.com", 1);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into alunos (nome, idade, email, turma_id) values ("Gabriele Madruga Martins", 18, "gabmadrugahj@gmail.com", 3);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into alunos (nome, idade, email, turma_id) values ("Vitor Jorge Ferreira", 18, "vicjorgefer@gmail.com", 5);,
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into alunos (nome, idade, email, turma_id) values ("João Gabriel da Silva", 15, "joaozingbs@gmail.com", 2);,
+Query OK, 1 row affected (0.01 sec)
+
+select * from alunos' at line 1
+mysql> select * from alunos;
++----+--------------------------+-------+--------------------------------+----------+
+| id | nome                     | idade | email                          | turma_id |
++----+--------------------------+-------+--------------------------------+----------+
+|  1 | Nicolas Duarte Padilha   |    17 | nicolasduartepadilha@gmail.com |        4 |
+|  2 | Anderson Moreira Fogaça  |    18 | andersonfogaca@gmail.com       |        4 |
+|  3 | Kauan Correa Carsten     |    16 | carstenxz@gmail.com            |        4 |
+|  4 | Louise Geppert Varela    |    15 | louisegvar@gmail.com           |        1 |
+|  5 | Gabriele Madruga Martins |    18 | gabmadrugahj@gmail.com         |        3 |
+|  6 | Vitor Jorge Ferreira     |    18 | vicjorgefer@gmail.com          |        5 |
+|  7 | João Gabriel da Silva    |    15 | joaozingbs@gmail.com           |        2 |
++----+--------------------------+-------+--------------------------------+----------+
+7 rows in set (0.00 sec)
+
+mysql> insert into alunos (nome, idade, email, turma_id) values ("Ramon da Silva Coelho", 18, "ramoncoelho@gmail.com", 4);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into alunos (nome, idade, email, turma_id) values ("Fernando Amorim", 18, "ramoncoelho@gmail.com", 5);"
+Query OK, 1 row affected (0.01 sec)
+
+insert into alunos (nome, idade, email, turma_id) values ("Ferna' at line 1
+mysql> select * from alunos;
++----+--------------------------+-------+--------------------------------+----------+
+| id | nome                     | idade | email                          | turma_id |
++----+--------------------------+-------+--------------------------------+----------+
+|  1 | Nicolas Duarte Padilha   |    17 | nicolasduartepadilha@gmail.com |        4 |
+|  2 | Anderson Moreira Fogaça  |    18 | andersonfogaca@gmail.com       |        4 |
+|  3 | Kauan Correa Carsten     |    16 | carstenxz@gmail.com            |        4 |
+|  4 | Louise Geppert Varela    |    15 | louisegvar@gmail.com           |        1 |
+|  5 | Gabriele Madruga Martins |    18 | gabmadrugahj@gmail.com         |        3 |
+|  6 | Vitor Jorge Ferreira     |    18 | vicjorgefer@gmail.com          |        5 |
+|  7 | João Gabriel da Silva    |    15 | joaozingbs@gmail.com           |        2 |
+|  8 | Ramon da Silva Coelho    |    18 | ramoncoelho@gmail.com          |        4 |
+|  9 | Fernando Amorim          |    18 | ramoncoelho@gmail.com          |        5 |
++----+--------------------------+-------+--------------------------------+----------+
+9 rows in set (0.00 sec)
+
+mysql> update alunos set email = fernandoamorim@gmail.com where id = 9;
+mysql> update alunos set email = "fernandoamorim@gmail.com" where id = 9;
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from alunos;
++----+--------------------------+-------+--------------------------------+----------+
+| id | nome                     | idade | email                          | turma_id |
++----+--------------------------+-------+--------------------------------+----------+
+|  1 | Nicolas Duarte Padilha   |    17 | nicolasduartepadilha@gmail.com |        4 |
+|  2 | Anderson Moreira Fogaça  |    18 | andersonfogaca@gmail.com       |        4 |
+|  3 | Kauan Correa Carsten     |    16 | carstenxz@gmail.com            |        4 |
+|  4 | Louise Geppert Varela    |    15 | louisegvar@gmail.com           |        1 |
+|  5 | Gabriele Madruga Martins |    18 | gabmadrugahj@gmail.com         |        3 |
+|  6 | Vitor Jorge Ferreira     |    18 | vicjorgefer@gmail.com          |        5 |
+|  7 | João Gabriel da Silva    |    15 | joaozingbs@gmail.com           |        2 |
+|  8 | Ramon da Silva Coelho    |    18 | ramoncoelho@gmail.com          |        4 |
+|  9 | Fernando Amorim          |    18 | fernandoamorim@gmail.com       |        5 |
++----+--------------------------+-------+--------------------------------+----------+
+9 rows in set (0.00 sec)
+
+mysql> insert into alunos (nome, idade, email, turma_id) values ("Leticia Cordova", 16, "leticiacordova@gmail.com", 1);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from alunos;
++----+--------------------------+-------+--------------------------------+----------+
+| id | nome                     | idade | email                          | turma_id |
++----+--------------------------+-------+--------------------------------+----------+
+|  1 | Nicolas Duarte Padilha   |    17 | nicolasduartepadilha@gmail.com |        4 |
+|  2 | Anderson Moreira Fogaça  |    18 | andersonfogaca@gmail.com       |        4 |
+|  3 | Kauan Correa Carsten     |    16 | carstenxz@gmail.com            |        4 |
+|  4 | Louise Geppert Varela    |    15 | louisegvar@gmail.com           |        1 |
+|  5 | Gabriele Madruga Martins |    18 | gabmadrugahj@gmail.com         |        3 |
+|  6 | Vitor Jorge Ferreira     |    18 | vicjorgefer@gmail.com          |        5 |
+|  7 | João Gabriel da Silva    |    15 | joaozingbs@gmail.com           |        2 |
+|  8 | Ramon da Silva Coelho    |    18 | ramoncoelho@gmail.com          |        4 |
+|  9 | Fernando Amorim          |    18 | fernandoamorim@gmail.com       |        5 |
+| 10 | Leticia Cordova          |    16 | leticiacordova@gmail.com       |        1 |
++----+--------------------------+-------+--------------------------------+----------+
+10 rows in set (0.00 sec)
+
+mysql> alter table alunos add column telefone char(18);
+Query OK, 0 rows affected (0.05 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> update alunos set email = "victorjorgfer@gmail.com" where id = 6;
+Query OK, 1 row affected (0.02 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from alunos;
++----+--------------------------+-------+--------------------------------+----------+----------+
+| id | nome                     | idade | email                          | turma_id | telefone |
++----+--------------------------+-------+--------------------------------+----------+----------+
+|  1 | Nicolas Duarte Padilha   |    17 | nicolasduartepadilha@gmail.com |        4 | NULL     |
+|  2 | Anderson Moreira Fogaça  |    18 | andersonfogaca@gmail.com       |        4 | NULL     |
+|  3 | Kauan Correa Carsten     |    16 | carstenxz@gmail.com            |        4 | NULL     |
+|  4 | Louise Geppert Varela    |    15 | louisegvar@gmail.com           |        1 | NULL     |
+|  5 | Gabriele Madruga Martins |    18 | gabmadrugahj@gmail.com         |        3 | NULL     |
+|  6 | Vitor Jorge Ferreira     |    18 | victorjorgfer@gmail.com        |        5 | NULL     |
+|  7 | João Gabriel da Silva    |    15 | joaozingbs@gmail.com           |        2 | NULL     |
+|  8 | Ramon da Silva Coelho    |    18 | ramoncoelho@gmail.com          |        4 | NULL     |
+|  9 | Fernando Amorim          |    18 | fernandoamorim@gmail.com       |        5 | NULL     |
+| 10 | Leticia Cordova          |    16 | leticiacordova@gmail.com       |        1 | NULL     |
++----+--------------------------+-------+--------------------------------+----------+----------+
+10 rows in set (0.00 sec)
+
+mysql> select nome, idade from alunos where idade > 15;
++--------------------------+-------+
+| nome                     | idade |
++--------------------------+-------+
+| Nicolas Duarte Padilha   |    17 |
+| Anderson Moreira Fogaça  |    18 |
+| Kauan Correa Carsten     |    16 |
+| Gabriele Madruga Martins |    18 |
+| Vitor Jorge Ferreira     |    18 |
+| Ramon da Silva Coelho    |    18 |
+| Fernando Amorim          |    18 |
+| Leticia Cordova          |    16 |
++--------------------------+-------+
+8 rows in set (0.00 sec)
+
+mysql> select nome from alunos order by nome desc;
++--------------------------+
+| nome                     |
++--------------------------+
+| Vitor Jorge Ferreira     |
+| Ramon da Silva Coelho    |
+| Nicolas Duarte Padilha   |
+| Louise Geppert Varela    |
+| Leticia Cordova          |
+| Kauan Correa Carsten     |
+| João Gabriel da Silva    |
+| Gabriele Madruga Martins |
+| Fernando Amorim          |
+| Anderson Moreira Fogaça  |
++--------------------------+
+10 rows in set (0.01 sec)
+
+mysql> select nome from alunos order by nome;
++--------------------------+
+| nome                     |
++--------------------------+
+| Anderson Moreira Fogaça  |
+| Fernando Amorim          |
+| Gabriele Madruga Martins |
+| João Gabriel da Silva    |
+| Kauan Correa Carsten     |
+| Leticia Cordova          |
+| Louise Geppert Varela    |
+| Nicolas Duarte Padilha   |
+| Ramon da Silva Coelho    |
+| Vitor Jorge Ferreira     |
++--------------------------+
+10 rows in set (0.00 sec)
+
+mysql> select count(*) from alunos;
++----------+
+| count(*) |
++----------+
+|       10 |
++----------+
+1 row in set (0.01 sec)
+
+mysql> select count(*) from alunos where turma_id = 1;
++----------+
+| count(*) |
++----------+
+|        2 |
++----------+
+1 row in set (0.00 sec)
+
+mysql> select count(*) from alunos where turma_id = 2;
++----------+
+| count(*) |
++----------+
+|        1 |
++----------+
+1 row in set (0.00 sec)
+
+mysql> select count(*) from alunos where turma_id = 3;
++----------+
+| count(*) |
++----------+
+|        1 |
++----------+
+1 row in set (0.00 sec)
+
+mysql> select count(*) from alunos where turma_id = 4;
++----------+
+| count(*) |
++----------+
+|        4 |
++----------+
+1 row in set (0.00 sec)
+
+mysql> select count(*) from alunos where turma_id = 5;
++----------+
+| count(*) |
++----------+
+|        2 |
++----------+
+1 row in set (0.00 sec)
+
+mysql> select count(nome) from alunos where turma_id = 4;
++-------------+
+| count(nome) |
++-------------+
+|           4 |
++-------------+
+1 row in set (0.00 sec)
+
+mysql> select count(nome) from alunos;
++-------------+
+| count(nome) |
++-------------+
+|          10 |
++-------------+
+1 row in set (0.00 sec)
+
+mysql> select avg(idade) from alunos;
++------------+
+| avg(idade) |
++------------+
+|    16.9000 |
++------------+
+1 row in set (0.00 sec)
+
+mysql> select a.nome, t.nome_turma as nomes from alunos a inner join turmas t on a.turma_id = t.id;
++--------------------------+----------+
+| nome                     | nomes    |
++--------------------------+----------+
+| Louise Geppert Varela    | turma 2A |
+| Leticia Cordova          | turma 2A |
+| João Gabriel da Silva    | turma 2B |
+| Gabriele Madruga Martins | turma 3A |
+| Nicolas Duarte Padilha   | turma 3B |
+| Anderson Moreira Fogaça  | turma 3B |
+| Kauan Correa Carsten     | turma 3B |
+| Ramon da Silva Coelho    | turma 3B |
+| Vitor Jorge Ferreira     | turma 3C |
+| Fernando Amorim          | turma 3C |
++--------------------------+----------+
+10 rows in set (0.00 sec)
+
+mysql> select a.nome, t.nome_turma as turma from alunos a inner join turmas t on a.turma_id = t.id;
++--------------------------+----------+
+| nome                     | turma    |
++--------------------------+----------+
+| Louise Geppert Varela    | turma 2A |
+| Leticia Cordova          | turma 2A |
+| João Gabriel da Silva    | turma 2B |
+| Gabriele Madruga Martins | turma 3A |
+| Nicolas Duarte Padilha   | turma 3B |
+| Anderson Moreira Fogaça  | turma 3B |
+| Kauan Correa Carsten     | turma 3B |
+| Ramon da Silva Coelho    | turma 3B |
+| Vitor Jorge Ferreira     | turma 3C |
+| Fernando Amorim          | turma 3C |
++--------------------------+----------+
+10 rows in set (0.00 sec)
+
+mysql> select count(*) from alunos where idade = 15;
++----------+
+| count(*) |
++----------+
+|        2 |
++----------+
+1 row in set (0.00 sec)
+
+mysql> select count(*) from alunos where idade = 16;
++----------+
+| count(*) |
++----------+
+|        2 |
++----------+
+1 row in set (0.00 sec)
+
+mysql> select count(*) from alunos where idade = 17;
++----------+
+| count(*) |
++----------+
+|        1 |
++----------+
+1 row in set (0.00 sec)
+
+mysql> select count(*) from alunos where idade = 18;
++----------+
+| count(*) |
++----------+
+|        5 |
++----------+
+1 row in set (0.00 sec)
+
+mysql> select count(*) from alunos where turma_id = 1;
++----------+
+| count(*) |
++----------+
+|        2 |
++----------+
+1 row in set (0.00 sec)
+
+mysql> select count(*) from alunos where turma_id = 2;
++----------+
+| count(*) |
++----------+
+|        1 |
++----------+
+1 row in set (0.00 sec)
+
+mysql> select count(*) from alunos where turma_id = 3;
++----------+
+| count(*) |
++----------+
+|        1 |
++----------+
+1 row in set (0.00 sec)
+
+mysql> select count(*) from alunos where turma_id = 4;
++----------+
+| count(*) |
++----------+
+|        4 |
++----------+
+1 row in set (0.00 sec)
+
+mysql> select count(*) from alunos where turma_id = 5;
++----------+
+| count(*) |
++----------+
+|        2 |
++----------+
+1 row in set (0.00 sec)
+
+mysql> describe turmas;
++------------+-------------+------+-----+---------+----------------+
+| Field      | Type        | Null | Key | Default | Extra          |
++------------+-------------+------+-----+---------+----------------+
+| id         | int         | NO   | PRI | NULL    | auto_increment |
+| nome_turma | varchar(50) | YES  |     | NULL    |                |
+| ano        | int         | YES  |     | NULL    |                |
++------------+-------------+------+-----+---------+----------------+
+3 rows in set (0.01 sec)
+
+mysql> select * from alunos where id > 3;
++----+--------------------------+-------+--------------------------+----------+----------+
+| id | nome                     | idade | email                    | turma_id | telefone |
++----+--------------------------+-------+--------------------------+----------+----------+
+|  4 | Louise Geppert Varela    |    15 | louisegvar@gmail.com     |        1 | NULL     |
+|  5 | Gabriele Madruga Martins |    18 | gabmadrugahj@gmail.com   |        3 | NULL     |
+|  6 | Vitor Jorge Ferreira     |    18 | victorjorgfer@gmail.com  |        5 | NULL     |
+|  7 | João Gabriel da Silva    |    15 | joaozingbs@gmail.com     |        2 | NULL     |
+|  8 | Ramon da Silva Coelho    |    18 | ramoncoelho@gmail.com    |        4 | NULL     |
+|  9 | Fernando Amorim          |    18 | fernandoamorim@gmail.com |        5 | NULL     |
+| 10 | Leticia Cordova          |    16 | leticiacordova@gmail.com |        1 | NULL     |
++----+--------------------------+-------+--------------------------+----------+----------+
+7 rows in set (0.00 sec)
+
+mysql> delete from alunos where idade < 14;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> select a.nome, a.idade, t.nome_turma as turma from alunos a inner join turmas t on a.turma_id = t.id;
++--------------------------+-------+----------+
+| nome                     | idade | turma    |
++--------------------------+-------+----------+
+| Louise Geppert Varela    |    15 | turma 2A |
+| Leticia Cordova          |    16 | turma 2A |
+| João Gabriel da Silva    |    15 | turma 2B |
+| Gabriele Madruga Martins |    18 | turma 3A |
+| Nicolas Duarte Padilha   |    17 | turma 3B |
+| Anderson Moreira Fogaça  |    18 | turma 3B |
+| Kauan Correa Carsten     |    16 | turma 3B |
+| Ramon da Silva Coelho    |    18 | turma 3B |
+| Vitor Jorge Ferreira     |    18 | turma 3C |
+| Fernando Amorim          |    18 | turma 3C |
++--------------------------+-------+----------+
+10 rows in set (0.00 sec)
+
+mysql> select a.nome, t.nome_turma as turma from alunos a inner join turmas t on a.turma_id = t.id order by a.nome;
++--------------------------+----------+
+| nome                     | turma    |
++--------------------------+----------+
+| Anderson Moreira Fogaça  | turma 3B |
+| Fernando Amorim          | turma 3C |
+| Gabriele Madruga Martins | turma 3A |
+| João Gabriel da Silva    | turma 2B |
+| Kauan Correa Carsten     | turma 3B |
+| Leticia Cordova          | turma 2A |
+| Louise Geppert Varela    | turma 2A |
+| Nicolas Duarte Padilha   | turma 3B |
+| Ramon da Silva Coelho    | turma 3B |
+| Vitor Jorge Ferreira     | turma 3C |
++--------------------------+----------+
+10 rows in set (0.00 sec)
+
+mysql> select a.nome, t.nome_turma as turma from alunos a inner join turmas t on a.turma_id = t.id order by t.nome_turma;
++--------------------------+----------+
+| nome                     | turma    |
++--------------------------+----------+
+| Louise Geppert Varela    | turma 2A |
+| Leticia Cordova          | turma 2A |
+| João Gabriel da Silva    | turma 2B |
+| Gabriele Madruga Martins | turma 3A |
+| Nicolas Duarte Padilha   | turma 3B |
+| Anderson Moreira Fogaça  | turma 3B |
+| Kauan Correa Carsten     | turma 3B |
+| Ramon da Silva Coelho    | turma 3B |
+| Vitor Jorge Ferreira     | turma 3C |
+| Fernando Amorim          | turma 3C |
++--------------------------+----------+
+10 rows in set (0.00 sec)
+
+mysql>
